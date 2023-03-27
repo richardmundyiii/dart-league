@@ -1,0 +1,16 @@
+.auth-login-form {
+  display: flex;
+  flex-direction: column;
+  height: 35vh;
+  justify-content: center;
+  align-items: center;
+  margin: 2vmin;
+}
+
+.auth-login-form input {
+  width: 50vw;
+}
+
+#login-button {
+  width: 100%;
+}
