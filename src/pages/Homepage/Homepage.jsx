@@ -1,22 +1,28 @@
 import Logo from "../../assets/images/santaCDA.png";
+import Camellia from "../../assets/images/camellia23.jpg";
+import TurkeyShoot from "../../assets/images/turkeyShoot.jpg";
+import StocktonRB from "../../assets/images/stocktonRB.jpg";
+
 export default function Homepage() {
   return (
     <>
       <div id="mainLogo">
-        <img src={Logo} alt="Santa Cruz Dart League Logo" class="w-25" />
+        <img src={Logo} alt="Santa Cruz Dart League Logo" className="w-25" />
       </div>
       <div id="upcomingEvents" class="text-center">
         {/* <h3 class="text-cente">Upcoming Events</h3> */}
-        <img src="/images/camellia23.jpg" alt="Camellia Classic Flyer" />
+        <img src={Camellia} alt="Camellia Classic Flyer" className="w-25" />
         <img
-          src="/images/turkeyShoot.jpg"
+          src={TurkeyShoot}
           alt="Santa Cruz Turkey Shoot Flyer"
           id="mobile"
+          className="w-25"
         />
         <img
-          src="/images/stocktonRB.jpg"
+          src={StocktonRB}
           alt="The Riverboat Flyer"
           id="mobile"
+          className="w-25"
         />
       </div>
       <div class="container mt-4 mb-4">
