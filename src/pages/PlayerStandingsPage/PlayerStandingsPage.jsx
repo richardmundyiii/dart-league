@@ -15,7 +15,7 @@ export default function PlayerStandingsPage() {
   }, []);
 
   return (
-    <main>
+    <main className="player-standings-page">
       <h1>Player {division} Standings</h1>
       <select value={division} onChange={(e) => setDivision(e.target.value)}>
         <option value="A">A League</option>

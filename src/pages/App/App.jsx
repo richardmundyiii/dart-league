@@ -5,6 +5,7 @@ import Homepage from "../Homepage/Homepage";
 import AuthPage from "../AuthPage/AuthPage";
 import TeamStandingsPage from "../TeamStandingsPage/TeamStandingsPage";
 import PlayerStandingsPage from "../PlayerStandingsPage/PlayerStandingsPage";
+import TeamDetailPage from "../TeamDetailPage/TeamDetailPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/teamstandings" element={<TeamStandingsPage />} />
+          <Route path="/teams/:teamId" element={<TeamDetailPage />} />
           <Route path="/playerstandings" element={<PlayerStandingsPage />} />
         </Routes>
       </>
