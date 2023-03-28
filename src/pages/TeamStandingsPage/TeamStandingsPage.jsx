@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as standingsApi from "../../utilities/standings-api";
+import * as standingsApi from "../../utilities/team-standings-api";
 import "./StandingsPage.css";
 
 export default function Standing() {
@@ -8,7 +8,7 @@ export default function Standing() {
 
   useEffect(() => {
     async function getStandings() {
-      const standings = await standingsApi.getLeagueStandings(division);
+      const standings = await standingsApi.getTeamStandings(division);
       setStandings(standings);
     }
     getStandings();

@@ -35,8 +35,9 @@ const standingSchema = new Schema(
       type: String,
       require: true,
     },
-    league: {
+    division: {
       type: String,
+      enum: ["A", "B"],
       require: true,
     },
   },

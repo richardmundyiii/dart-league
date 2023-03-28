@@ -1,6 +1,6 @@
 import sendRequest from "./send-request";
-const BASE_URL = "/api/standings";
+const BASE_URL = "/api/playerstandings";
 
-export async function getLeagueStandings(division) {
+export async function getPlayerStandings(division) {
   return sendRequest(`${BASE_URL}/${division}`);
 }
