@@ -11,8 +11,16 @@ export default function PlayerStandingsPage() {
       const standings = await playerStandingsApi.getPlayerStandings(division);
       setStandings(standings);
     }
-    getStandings();
+    getPlayerStandings();
   }, []);
 
-  return <h1>Player Standings Page</h1>;
+  return (
+    <main>
+      <h1>Player {division} Standings</h1>
+      <select value={division} onChange={(e) => setDivision(e.target.value)}>
+        <option value="A">A League</option>
+        <option value="B">B League</option>
+      </select>
+    </main>
+  );
 }

@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import * as standingsApi from "../../utilities/team-standings-api";
-import "./StandingsPage.css";
+import "./TeamStandingsPage.css";
 
 export default function Standing() {
   const [division, setDivision] = useState("A");
   const [standings, setStandings] = useState([]);
 
   useEffect(() => {
-    async function getStandings() {
+    async function getTeamStandings() {
       const standings = await standingsApi.getTeamStandings(division);
       setStandings(standings);
     }
-    getStandings();
+    getTeamStandings();
   }, []);
 
   return (

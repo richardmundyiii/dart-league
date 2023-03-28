@@ -31,59 +31,25 @@ export default function NavBar({ user, setUser }) {
                   Home
                 </a>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item">
                 <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarScrollingDropdown"
+                  className="nav-link"
+                  href="/teamstandings"
                   role="button"
-                  data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   Team Standings
                 </a>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarScrollingDropdown"
-                >
-                  <li>
-                    <a className="dropdown-item" href="/standingsA">
-                      A League
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/standingsB">
-                      B League
-                    </a>
-                  </li>
-                </ul>
               </li>
-              <li className="nav-item dropdown">
+              <li className="nav-item">
                 <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarScrollingDropdown"
+                  className="nav-link"
+                  href="/playerstandings"
                   role="button"
-                  data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Players
+                  Player Standings
                 </a>
-                <ul
-                  className="dropdown-menu"
-                  aria-labelledby="navbarScrollingDropdown"
-                >
-                  <li>
-                    <a className="dropdown-item" href="/playersA">
-                      A League
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="/playersB">
-                      B League
-                    </a>
-                  </li>
-                </ul>
               </li>
             </ul>
             <button className="btn btn-danger">

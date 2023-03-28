@@ -1,4 +1,4 @@
-const Standings = require("../../models/standingas");
+const Standings = require("../../models/standing");
 
 module.exports = {
   forDivision,
