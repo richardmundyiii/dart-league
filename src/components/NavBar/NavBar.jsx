@@ -47,7 +47,7 @@ export default function NavBar({ user, setUser }) {
                   aria-labelledby="navbarScrollingDropdown"
                 >
                   <li>
-                    <a className="dropdown-item" href="/api/standingsA">
+                    <a className="dropdown-item" href="/standingsA">
                       A League
                     </a>
                   </li>
