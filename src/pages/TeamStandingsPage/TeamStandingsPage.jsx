@@ -21,11 +21,38 @@ export default function Standing() {
         <option value="A">A League</option>
         <option value="B">B League</option>
       </select>
-      {standings.map((s) => (
-        <p key={s._id}>
-          {s.place} - {s.teamName}
-        </p>
-      ))}
+      <div className="card p-5 mt-3">
+        <table className="table table-striped">
+          <thead>
+            <tr>
+              <th>Place</th>
+              <th>Team</th>
+              <th>Points</th>
+              <th>Wins</th>
+              <th>Losses</th>
+              <th>LW %</th>
+              <th>01 Avg</th>
+              <th>Cr Avg</th>
+            </tr>
+          </thead>
+          <tbody>
+            {standings.map((s) => (
+              <tr key={s._id}>
+                <td>{s.place}</td>
+                <td>
+                  <a href={`/teams/${s.name}`}>{s.teamName}</a>
+                </td>
+                <td>{s.points}</td>
+                <td>{s.matchesWon}</td>
+                <td>{s.matchesPlayed - s.matchesWon}</td>
+                <td>{s.legWonPct}</td>
+                <td>{s.zeroOneAvg}</td>
+                <td>{s.cricketAvg}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </main>
   );
 }
