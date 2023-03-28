@@ -8,10 +8,10 @@ export default function NavBar({ user, setUser }) {
   }
   return (
     <>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarTogglerDemo01"
@@ -19,21 +19,21 @@ export default function NavBar({ user, setUser }) {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="/">
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a className="navbar-brand" href="/">
               Darts of Santa Cruz
             </a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="/">
                   Home
                 </a>
               </li>
-              <li class="nav-item dropdown">
+              <li className="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle"
                   href="#"
                   id="navbarScrollingDropdown"
                   role="button"
@@ -43,24 +43,24 @@ export default function NavBar({ user, setUser }) {
                   Team Standings
                 </a>
                 <ul
-                  class="dropdown-menu"
+                  className="dropdown-menu"
                   aria-labelledby="navbarScrollingDropdown"
                 >
                   <li>
-                    <a class="dropdown-item" href="/standingsA">
+                    <a className="dropdown-item" href="/api/standingsA">
                       A League
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="/standingsB">
+                    <a className="dropdown-item" href="/standingsB">
                       B League
                     </a>
                   </li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
+              <li className="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle"
+                  className="nav-link dropdown-toggle"
                   href="#"
                   id="navbarScrollingDropdown"
                   role="button"
@@ -70,16 +70,16 @@ export default function NavBar({ user, setUser }) {
                   Players
                 </a>
                 <ul
-                  class="dropdown-menu"
+                  className="dropdown-menu"
                   aria-labelledby="navbarScrollingDropdown"
                 >
                   <li>
-                    <a class="dropdown-item" href="/playersA">
+                    <a className="dropdown-item" href="/playersA">
                       A League
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="/playersB">
+                    <a className="dropdown-item" href="/playersB">
                       B League
                     </a>
                   </li>

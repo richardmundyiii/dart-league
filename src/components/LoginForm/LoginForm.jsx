@@ -29,24 +29,24 @@ export default function LoginForm({ setUser }) {
   return (
     <div className="card auth-login-form">
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <div class="mb-3 row">
-          <div class="col-sm-10">
+        <div className="mb-3 row">
+          <div className="col-sm-10">
             <input
               type="text"
               name="email"
               value={credentials.email}
               onChange={handleChange}
-              class="form-control"
+              className="form-control"
               placeholder="Email"
               required
             />
           </div>
         </div>
-        <div class="mb-3 row">
-          <div class="col-sm-10">
+        <div className="mb-3 row">
+          <div className="col-sm-10">
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               id="inputPassword"
               placeholder="Password"
               name="password"

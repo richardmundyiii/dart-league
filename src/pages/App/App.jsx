@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/auth" element={<AuthPage />} />
-          <Route path="/standingsA" element={<StandingsA />} />
+          <Route path="/api/standingsA" element={<StandingsA />} />
           <Route path="/standingsB" element={<StandingsB />} />
           <Route path="/playersA" element={<PlayersA />} />
           <Route path="/playersB" element={<PlayersB />} />
