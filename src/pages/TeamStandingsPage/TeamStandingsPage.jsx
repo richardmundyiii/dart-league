@@ -14,6 +14,14 @@ export default function Standing() {
     getTeamStandings();
   }, [division]);
 
+  useEffect(function () {
+    console.log("useEffect runs after every render");
+  });
+
+  useEffect(function () {
+    console.log("useEffect runs after something else");
+  }, []);
+
   return (
     <main className="team-standings-page">
       <h1>Standings {division} League</h1>

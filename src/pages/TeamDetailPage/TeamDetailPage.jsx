@@ -18,7 +18,7 @@ export default function TeamDetailPage() {
     getTeamDetail();
   }, [teamId]);
 
-  if (!team) return null;
+  if (!teamId) return null;
 
   return (
     <>
