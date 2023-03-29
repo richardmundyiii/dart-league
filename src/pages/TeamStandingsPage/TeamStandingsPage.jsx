@@ -40,7 +40,7 @@ export default function Standing() {
               <tr key={s._id}>
                 <td>{s.place}</td>
                 <td>
-                  <a href={`/teams/${s.name}`}>{s.teamName}</a>
+                  <a href={`/teams/${s.teamName}`}>{s.teamName}</a>
                 </td>
                 <td>{s.points}</td>
                 <td>{s.matchesWon}</td>

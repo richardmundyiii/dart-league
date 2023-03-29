@@ -8,7 +8,7 @@ export default function TeamDetailPage() {
   const [players, setPlayers] = useState([]);
 
   const { teamId } = useParams();
-
+  console.log(teamId);
   useEffect(() => {
     async function getTeamDetail() {
       const team = await teamDetailApi.getTeamDetail(teamId);
