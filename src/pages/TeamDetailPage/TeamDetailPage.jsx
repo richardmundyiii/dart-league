@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as teamDetailApi from "../../utilities/team-detail-api";
 import "./TeamDetailPage.css";
+import TeamDetailCard from "../../components/TeamDetailCard/TeamDetailCard";
 
 export default function TeamDetailPage() {
   const [team, setTeam] = useState(null);
@@ -19,5 +20,9 @@ export default function TeamDetailPage() {
 
   if (!team) return null;
 
-  return <main className="team-detail-page"></main>;
+  return (
+    <>
+      <TeamDetailCard />
+    </>
+  );
 }
