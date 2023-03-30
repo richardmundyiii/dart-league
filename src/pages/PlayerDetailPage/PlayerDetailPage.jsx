@@ -19,6 +19,8 @@ export default function PlayerDetailPage() {
   //   let playerNameSplit = playerId.split(",");
   //   let playerName = playerNameSplit[1] + " " + playerNameSplit[0];
 
+  function handleEdit() {}
+
   return (
     <>
       <main>
@@ -28,7 +30,7 @@ export default function PlayerDetailPage() {
             <table className="table table-striped">
               <thead>
                 <tr>
-                  <th>Date</th>
+                  <th>Week</th>
                   <th>Opponent</th>
                   <th>Won</th>
                   <th>Losses</th>
@@ -43,9 +45,33 @@ export default function PlayerDetailPage() {
                   <th>Edit</th>
                 </tr>
               </thead>
+              <tbody>
+                {player &&
+                  player.stats.map((s, idx) => (
+                    <tr key={idx}>
+                      <td>{s.week}</td>
+                      <td>{s.opp}</td>
+                      <td>{s.wins}</td>
+                      <td>{s.losses}</td>
+                      <td>{s.sevenMarks}</td>
+                      <td>{s.eightMarks}</td>
+                      <td>{s.nineMarks}</td>
+                      <td>{s.fourBulls}</td>
+                      <td>{s.fiveBulls}</td>
+                      <td>{s.sixBulls}</td>
+                      <td>{s.nineFivePlus}</td>
+                      <td>{s.points}</td>
+                      <td>
+                        <button className="btn btn-danger" onClick={handleEdit}>
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
             </table>
           </div>
-          <button>Add</button>
+          <button className="btn btn-info">Add</button>
         </div>
       </main>
     </>
