@@ -1,14 +1,10 @@
-const Team = require("../../models/team");
+const Player = require("../../models/player");
 
 module.exports = {
-  forDivision,
+  forPlayerDetail,
 };
 
-async function forDivision(req, res) {
-  try {
-    const standings = await Standings.find({ division: req.params.div });
-    res.json(standings);
-  } catch (err) {
-    res.status(400).json(err);
-  }
+function forPlayerDetail(req, res) {
+  const player = Player.findOne({ name: req.params.name });
+  res.json(player);
 }
