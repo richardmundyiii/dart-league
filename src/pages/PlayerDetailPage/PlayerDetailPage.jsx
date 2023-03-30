@@ -4,7 +4,7 @@ import * as playerDetailApi from "../../utilities/player-detail-api";
 import { useParams } from "react-router-dom";
 
 export default function PlayerDetailPage() {
-  const [player, setPlayer] = useState([]);
+  const [player, setPlayer] = useState(null);
 
   const { playerId } = useParams();
 
@@ -16,17 +16,14 @@ export default function PlayerDetailPage() {
     getPlayer();
   }, [playerId]);
 
-  //   console.log(player);
-
-  let playerNameSplit = playerId.split(", ");
-  let playerName = playerNameSplit[1] + " " + playerNameSplit[0];
+  //   let playerNameSplit = playerId.split(",");
+  //   let playerName = playerNameSplit[1] + " " + playerNameSplit[0];
 
   return (
     <>
       <main>
-        {/* <h1>Player Detail Page</h1> */}
         <div className="card m-4 p-3">
-          <div className="card-header">{playerName}</div>
+          <div className="card-header">{player && player.name}</div>
           <div className="card-body">
             <table className="table table-striped">
               <thead>
@@ -43,10 +40,12 @@ export default function PlayerDetailPage() {
                   <th>6B</th>
                   <th>95+</th>
                   <th>Points</th>
+                  <th>Edit</th>
                 </tr>
               </thead>
             </table>
           </div>
+          <button>Add</button>
         </div>
       </main>
     </>

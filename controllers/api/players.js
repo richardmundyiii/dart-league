@@ -4,8 +4,8 @@ module.exports = {
   forPlayerDetail,
 };
 
-function forPlayerDetail(req, res) {
-  const player = Player.findOne({ name: req.params.name });
-  console.log(player);
+async function forPlayerDetail(req, res) {
+  console.log(req.params.id);
+  const player = await Player.findOne({ _id: req.params.id });
   res.json(player);
 }

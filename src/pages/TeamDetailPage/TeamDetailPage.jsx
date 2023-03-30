@@ -47,7 +47,7 @@ export default function TeamDetailPage() {
                 {players.map((p, idx) => (
                   <tr key={idx}>
                     <td>
-                      <Link to={`/players/${p.name}`}>{p.name}</Link>
+                      <Link to={`/players/${p._id}`}>{p.name}</Link>
                     </td>
                     <td>{p.stats.wins}</td>
                     <td>{p.stats.losses}</td>
