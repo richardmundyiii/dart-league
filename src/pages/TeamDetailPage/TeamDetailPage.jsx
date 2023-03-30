@@ -47,18 +47,18 @@ export default function TeamDetailPage() {
                 {players.map((p, idx) => (
                   <tr key={idx}>
                     <td>
-                      <Link to={"/players/:id"}>{p.name}</Link>
+                      <Link to={`/players/${p.name}`}>{p.name}</Link>
                     </td>
                     <td>{p.stats.wins}</td>
                     <td>{p.stats.losses}</td>
-                    <td>{p.stats.losses}</td>
-                    <td>{p.stats.losses}</td>
-                    <td>{p.stats.losses}</td>
-                    <td>{p.stats.losses}</td>
-                    <td>{p.stats.losses}</td>
-                    <td>{p.stats.losses}</td>
-                    <td>{p.stats.losses}</td>
-                    <td>{p.stats.losses}</td>
+                    <td>{p.stats.fourBull}</td>
+                    <td>{p.stats.fiveBull}</td>
+                    <td>{p.stats.sixBull}</td>
+                    <td>{p.stats.sevenMark}</td>
+                    <td>{p.stats.eightMark}</td>
+                    <td>{p.stats.nineMark}</td>
+                    <td>{p.stats.highlights}</td>
+                    <td>{p.stats.points}</td>
                   </tr>
                 ))}
               </tbody>
