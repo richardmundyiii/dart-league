@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-export default function TeamDetailCard() {
+export default function TeamDetailCard({ team }) {
+  console.log(team);
   return (
     <>
       <main>
