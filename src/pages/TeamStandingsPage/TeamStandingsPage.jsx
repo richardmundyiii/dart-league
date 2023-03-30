@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import * as standingsApi from "../../utilities/team-standings-api";
 import "./TeamStandingsPage.css";
 
@@ -40,7 +41,7 @@ export default function Standing() {
               <tr key={s._id}>
                 <td>{s.place}</td>
                 <td>
-                  <a href={`/teams/${s.teamName}`}>{s.teamName}</a>
+                  <Link to={`/teams/${s.teamName}`}>{s.teamName}</Link>
                 </td>
                 <td>{s.points}</td>
                 <td>{s.matchesWon}</td>
