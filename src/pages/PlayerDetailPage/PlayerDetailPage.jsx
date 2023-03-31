@@ -151,43 +151,94 @@ export default function PlayerDetailPage() {
                     </tr>
                   ))}
                 {showNewRow && index === rows.length - 1 && (
-                  <tr>
-                    <td>{newRow.id}</td>
+                  <tr id="add-player-stats-row">
+                    {/* <td>{newRow.id}</td> */}
                     <td>
-                      <input type="text" value={newRow.week} />
+                      <input
+                        onChange={handleInputChange}
+                        type="number"
+                        value={newRow.week}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.wins} />
+                      <input
+                        onChange={handleInputChange}
+                        type="number"
+                        value={newRow.week}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.losses} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.wins}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.col4} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.losses}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.col5} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.col4}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.col5} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.col5}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.col5} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.col5}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.col5} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.col5}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.col5} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.col5}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.col5} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.col5}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.col5} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.col5}
+                      />
                     </td>
                     <td>
-                      <input type="text" value={newRow.col5} />
+                      <input
+                        onChange={handleInputChange}
+                        type="text"
+                        value={newRow.col5}
+                      />
+                    </td>
+                    <td>
+                      <button className="btn btn-success">Save</button>
                     </td>
                   </tr>
                 )}

@@ -43,11 +43,16 @@ export default function TeamDetailPage() {
                   <th>Hightlight Points</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="team-detail-table">
                 {players.map((p, idx) => (
                   <tr key={idx}>
                     <td>
-                      <Link to={`/players/${p._id}`}>{p.name}</Link>
+                      <Link
+                        className="btn btn-warning"
+                        to={`/players/${p._id}`}
+                      >
+                        {p.name}
+                      </Link>
                     </td>
                     <td>{p.stats.wins}</td>
                     <td>{p.stats.losses}</td>

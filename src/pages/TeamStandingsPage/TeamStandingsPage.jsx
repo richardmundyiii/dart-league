@@ -36,12 +36,14 @@ export default function Standing() {
               <th>Cr Avg</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="team-standings-table">
             {standings.map((s) => (
               <tr key={s._id}>
                 <td>{s.place}</td>
                 <td>
-                  <Link to={`/teams/${s.teamName}`}>{s.teamName}</Link>
+                  <Link className="btn btn-info" to={`/teams/${s.teamName}`}>
+                    {s.teamName}
+                  </Link>
                 </td>
                 <td>{s.points}</td>
                 <td>{s.matchesWon}</td>

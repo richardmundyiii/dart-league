@@ -1,3 +1,10 @@
 .team-standings-page {
   margin-top: 2vmin;
 }
+
+.team-detail-table a {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  width: 100%;
+}
