@@ -8,6 +8,7 @@ export default function PlayerDetailPage() {
   const index = 0;
   const [player, setPlayer] = useState(null);
   const [rows, setRows] = useState((player && player.stats) || []);
+  const [deletedRow, setDeletedRow] = useState({});
 
   const [newRow, setNewRow] = useState({
     week: 0,
@@ -33,7 +34,7 @@ export default function PlayerDetailPage() {
       setPlayer(player);
     }
     getPlayer();
-  }, [playerId, rows]);
+  }, [playerId, rows, deletedRow]);
 
   function handleInputChange(e) {
     setNewRow({
@@ -64,6 +65,11 @@ export default function PlayerDetailPage() {
     });
   }
 
+  async function handleDeleteClick(id) {
+    const row = await PlayerStats.deleteRow(id);
+    setDeletedRow(row);
+  }
+
   return (
     <>
       <main>
@@ -83,16 +89,17 @@ export default function PlayerDetailPage() {
                   <th>4B</th>
                   <th>5B</th>
                   <th>6B</th>
+                  <th>HT</th>
                   <th>95+</th>
                   <th>Points</th>
-                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
                 {player &&
                   player.stats &&
-                  player.stats.map((s, idx) => (
-                    <tr key={idx}>
+                  player.stats.map((s, id) => (
+                    <tr key={id}>
                       <td>{s.week}</td>
                       <td>{s.opp}</td>
                       <td>{s.wins}</td>
@@ -107,7 +114,12 @@ export default function PlayerDetailPage() {
                       <td>{s.highlight}</td>
                       <td>{s.points}</td>
                       <td>
-                        <button className="btn btn-danger">Edit</button>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => handleDeleteClick(s._id)}
+                        >
+                          Delete
+                        </button>
                       </td>
                     </tr>
                   ))}
