@@ -4,7 +4,42 @@ import * as playerDetailApi from "../../utilities/player-detail-api";
 import { useParams } from "react-router-dom";
 
 export default function PlayerDetailPage() {
+  const index = 0;
   const [player, setPlayer] = useState(null);
+  const [rows, setRows] = useState([
+    {
+      id: 1,
+      week: "",
+      opp: "",
+      wins: "",
+      losses: "",
+      sevenMarks: "",
+      eightMarks: "",
+      nineMarks: "",
+      fourBulls: "",
+      fiveBulls: "",
+      sixBulls: "",
+      nineFivePlus: "",
+      points: "",
+    },
+  ]);
+  const [newRow, setNewRow] = useState({
+    id: rows.length + 1,
+    week: "",
+    opp: "",
+    wins: "",
+    losses: "",
+    sevenMarks: "",
+    eightMarks: "",
+    nineMarks: "",
+    fourBulls: "",
+    fiveBulls: "",
+    sixBulls: "",
+    nineFivePlus: "",
+    points: "",
+  });
+
+  const [showNewRow, setShowNewRow] = useState(false);
 
   const { playerId } = useParams();
 
@@ -20,6 +55,53 @@ export default function PlayerDetailPage() {
   //   let playerName = playerNameSplit[1] + " " + playerNameSplit[0];
 
   function handleEdit() {}
+
+  function handleAddRow() {
+    setRows((prevRows) => [
+      {
+        id: rows.length + 1,
+        opp: "",
+        week: "",
+        wins: "",
+        losses: "",
+        sevenMarks: "",
+        eightMarks: "",
+        nineMarks: "",
+        fourBulls: "",
+        fiveBulls: "",
+        sixBulls: "",
+        nineFivePlus: "",
+        points: "",
+      },
+    ]);
+    setShowNewRow(true);
+  }
+
+  function handleInputChange(e) {
+    setNewRow({
+      ...newRow,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  // function handleSaveRow() {
+  //   setRows([...rows, newRow]);
+  //   setNewRow({
+  //     id: rows.length + 2,
+  //     week: "",
+  //     opp: "",
+  //     wins: "",
+  //     losses: "",
+  //     sevenMarks: "",
+  //     eightMarks: "",
+  //     nineMarks: "",
+  //     fourBulls: "",
+  //     fiveBulls: "",
+  //     sixBulls: "",
+  //     nineFivePlus: "",
+  //     points: "",
+  //   });
+  // }
 
   return (
     <>
@@ -68,10 +150,53 @@ export default function PlayerDetailPage() {
                       </td>
                     </tr>
                   ))}
+                {showNewRow && index === rows.length - 1 && (
+                  <tr>
+                    <td>{newRow.id}</td>
+                    <td>
+                      <input type="text" value={newRow.week} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.wins} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.losses} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.col4} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.col5} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.col5} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.col5} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.col5} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.col5} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.col5} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.col5} />
+                    </td>
+                    <td>
+                      <input type="text" value={newRow.col5} />
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
-          <button className="btn btn-info">Add</button>
+          <button className="btn btn-info" onClick={handleAddRow}>
+            Add
+          </button>
         </div>
       </main>
     </>
