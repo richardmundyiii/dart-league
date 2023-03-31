@@ -2,44 +2,28 @@ import { useEffect, useState } from "react";
 import "./PlayerDetailPage.css";
 import * as playerDetailApi from "../../utilities/player-detail-api";
 import { useParams } from "react-router-dom";
+import * as PlayerStats from "../../utilities/player-stats-api";
 
 export default function PlayerDetailPage() {
   const index = 0;
   const [player, setPlayer] = useState(null);
-  const [rows, setRows] = useState([
-    {
-      id: 1,
-      week: "",
-      opp: "",
-      wins: "",
-      losses: "",
-      sevenMarks: "",
-      eightMarks: "",
-      nineMarks: "",
-      fourBulls: "",
-      fiveBulls: "",
-      sixBulls: "",
-      nineFivePlus: "",
-      points: "",
-    },
-  ]);
-  const [newRow, setNewRow] = useState({
-    id: rows.length + 1,
-    week: "",
-    opp: "",
-    wins: "",
-    losses: "",
-    sevenMarks: "",
-    eightMarks: "",
-    nineMarks: "",
-    fourBulls: "",
-    fiveBulls: "",
-    sixBulls: "",
-    nineFivePlus: "",
-    points: "",
-  });
+  const [rows, setRows] = useState((player && player.stats) || []);
 
-  const [showNewRow, setShowNewRow] = useState(false);
+  const [newRow, setNewRow] = useState({
+    week: 0,
+    opp: "",
+    wins: 0,
+    losses: 0,
+    sevenMarks: 0,
+    eightMarks: 0,
+    nineMarks: 0,
+    fourBulls: 0,
+    fiveBulls: 0,
+    sixBulls: 0,
+    hatTricks: 0,
+    highlights: 0,
+    points: 0,
+  });
 
   const { playerId } = useParams();
 
@@ -49,33 +33,7 @@ export default function PlayerDetailPage() {
       setPlayer(player);
     }
     getPlayer();
-  }, [playerId]);
-
-  //   let playerNameSplit = playerId.split(",");
-  //   let playerName = playerNameSplit[1] + " " + playerNameSplit[0];
-
-  function handleEdit() {}
-
-  function handleAddRow() {
-    setRows((prevRows) => [
-      {
-        id: rows.length + 1,
-        opp: "",
-        week: "",
-        wins: "",
-        losses: "",
-        sevenMarks: "",
-        eightMarks: "",
-        nineMarks: "",
-        fourBulls: "",
-        fiveBulls: "",
-        sixBulls: "",
-        nineFivePlus: "",
-        points: "",
-      },
-    ]);
-    setShowNewRow(true);
-  }
+  }, [playerId, rows]);
 
   function handleInputChange(e) {
     setNewRow({
@@ -84,24 +42,27 @@ export default function PlayerDetailPage() {
     });
   }
 
-  // function handleSaveRow() {
-  //   setRows([...rows, newRow]);
-  //   setNewRow({
-  //     id: rows.length + 2,
-  //     week: "",
-  //     opp: "",
-  //     wins: "",
-  //     losses: "",
-  //     sevenMarks: "",
-  //     eightMarks: "",
-  //     nineMarks: "",
-  //     fourBulls: "",
-  //     fiveBulls: "",
-  //     sixBulls: "",
-  //     nineFivePlus: "",
-  //     points: "",
-  //   });
-  // }
+  async function handleSaveRow(e) {
+    e.preventDefault();
+    const row = await PlayerStats.addRow(newRow, player._id);
+    const updateRow = [...rows, row];
+    setRows(updateRow);
+    setNewRow({
+      week: 0,
+      opp: "",
+      wins: 0,
+      losses: 0,
+      sevenMarks: 0,
+      eightMarks: 0,
+      nineMarks: 0,
+      fourBulls: 0,
+      fiveBulls: 0,
+      sixBulls: 0,
+      hatTricks: 0,
+      highlights: 0,
+      points: 0,
+    });
+  }
 
   return (
     <>
@@ -129,125 +90,165 @@ export default function PlayerDetailPage() {
               </thead>
               <tbody>
                 {player &&
+                  player.stats &&
                   player.stats.map((s, idx) => (
                     <tr key={idx}>
                       <td>{s.week}</td>
                       <td>{s.opp}</td>
                       <td>{s.wins}</td>
                       <td>{s.losses}</td>
-                      <td>{s.sevenMarks}</td>
-                      <td>{s.eightMarks}</td>
-                      <td>{s.nineMarks}</td>
-                      <td>{s.fourBulls}</td>
-                      <td>{s.fiveBulls}</td>
-                      <td>{s.sixBulls}</td>
-                      <td>{s.nineFivePlus}</td>
+                      <td>{s.sevenMark}</td>
+                      <td>{s.eightMark}</td>
+                      <td>{s.nineMark}</td>
+                      <td>{s.fourBull}</td>
+                      <td>{s.fiveBull}</td>
+                      <td>{s.sixBull}</td>
+                      <td>{s.hatTrick}</td>
+                      <td>{s.highlight}</td>
                       <td>{s.points}</td>
                       <td>
-                        <button className="btn btn-danger" onClick={handleEdit}>
-                          Edit
-                        </button>
+                        <button className="btn btn-danger">Edit</button>
                       </td>
                     </tr>
                   ))}
-                {showNewRow && index === rows.length - 1 && (
-                  <tr id="add-player-stats-row">
-                    {/* <td>{newRow.id}</td> */}
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="number"
-                        value={newRow.week}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="number"
-                        value={newRow.week}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.wins}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.losses}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.col4}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.col5}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.col5}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.col5}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.col5}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.col5}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.col5}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="text"
-                        value={newRow.col5}
-                      />
-                    </td>
-                    <td>
-                      <button className="btn btn-success">Save</button>
-                    </td>
-                  </tr>
-                )}
               </tbody>
             </table>
           </div>
-          <button className="btn btn-info" onClick={handleAddRow}>
-            Add
-          </button>
+        </div>
+
+        <div className="card m-4 p-3">
+          <form onSubmit={handleSaveRow}>
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>Week</th>
+                  <th>Opp</th>
+                  <th>Wins</th>
+                  <th>Losses</th>
+                  <th>7M</th>
+                  <th>8M</th>
+                  <th>9M</th>
+                  <th>4B</th>
+                  <th>5B</th>
+                  <th>6B</th>
+                  <th>HT</th>
+                  <th>95+</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="add-player-stats-row">
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.week}
+                      name="week"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="text"
+                      value={newRow.opp}
+                      name="opp"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.wins}
+                      name="wins"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.losses}
+                      name="losses"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.sevenMarks}
+                      name="sevenMarks"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.eightMarks}
+                      name="eightMarks"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.nineMarks}
+                      name="nineMarks"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.fourBulls}
+                      name="fourBulls"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.fiveBulls}
+                      name="fiveBulls"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.sixBulls}
+                      name="sixBulls"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.hatTricks}
+                      name="hatTrick"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.highlights}
+                      name="highlights"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      onChange={handleInputChange}
+                      type="number"
+                      value={newRow.points}
+                      name="points"
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button className="btn btn-info" style={{ width: "100%" }}>
+              Save
+            </button>
+          </form>
         </div>
       </main>
     </>

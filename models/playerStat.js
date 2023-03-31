@@ -13,83 +13,59 @@ const playerStatSchema = new Schema({
   },
   wins: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   losses: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   sevenMark: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   eightMark: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   nineMark: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   fourBull: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   fiveBull: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   sixBull: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   hatTrick: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   highlight: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
   points: {
     type: Number,
-    default: 0,
     required: true,
+    default: 0,
   },
 });
 
-const playerSchema = new Schema({
-  name: {
-    type: String,
-    require: true,
-  },
-  team: {
-    type: Schema.Types.ObjectId,
-    ref: "Team",
-    require: true,
-  },
-  division: {
-    type: String,
-    require: true,
-  },
-  email: {
-    type: String,
-  },
-  password: {
-    type: String,
-    requrie: true,
-  },
-  stats: [playerStatSchema],
-});
-
-module.exports = mongoose.model("Player", playerSchema);
+module.exports = mongoose.model("PlayerStat", playerStatSchema);

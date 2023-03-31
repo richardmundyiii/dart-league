@@ -54,7 +54,7 @@ export default function TeamDetailPage() {
                         {p.name}
                       </Link>
                     </td>
-                    <td>{p.stats.wins}</td>
+                    {/* <td>{p.stats.wins}</td>
                     <td>{p.stats.losses}</td>
                     <td>{p.stats.fourBull}</td>
                     <td>{p.stats.fiveBull}</td>
@@ -63,7 +63,7 @@ export default function TeamDetailPage() {
                     <td>{p.stats.eightMark}</td>
                     <td>{p.stats.nineMark}</td>
                     <td>{p.stats.highlights}</td>
-                    <td>{p.stats.points}</td>
+                    <td>{p.stats.points}</td> */}
                   </tr>
                 ))}
               </tbody>
