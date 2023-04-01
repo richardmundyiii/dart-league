@@ -12,6 +12,7 @@ export async function signUp(userData) {
     return getUser();
   } catch (err) {
     // If the error response has a message property, display it in the UI
+    console.log(err);
     if (err.response && err.response.message) {
       throw new Error(err.response.message);
     }
@@ -48,6 +49,7 @@ export function getToken() {
 
 export function getUser() {
   const token = getToken();
+  console.log("get user function", token);
   return token ? JSON.parse(atob(token.split(".")[1])).user : null;
 }
 

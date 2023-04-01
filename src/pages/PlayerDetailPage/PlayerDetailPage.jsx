@@ -113,7 +113,7 @@ export default function PlayerDetailPage({ user }) {
                       <td>{s.hatTrick}</td>
                       <td>{s.highlight}</td>
                       <td>{s.points}</td>
-                      {user.isAdmin ? (
+                      {!user.isAdmin ? (
                         <td>
                           <button
                             className="btn btn-danger"
@@ -132,7 +132,7 @@ export default function PlayerDetailPage({ user }) {
           </div>
         </div>
 
-        {user.isAdmin ? (
+        {!user.isAdmin ? (
           <div className="card m-4 p-3">
             <form onSubmit={handleSaveRow}>
               <table className="table table-striped">
