@@ -52,9 +52,17 @@ export default function NavBar({ user, setUser }) {
                 </a>
               </li>
             </ul>
-            <button className="btn btn-danger">
-              <a href="/auth">Login</a>
-            </button>
+            {!user || !user.isAdmin ? (
+              <button className="btn btn-danger">
+                <a href="/auth">Login</a>
+              </button>
+            ) : (
+              <button className="btn btn-info">
+                <Link onClick={handleLogOut} href="/logout">
+                  Logout
+                </Link>
+              </button>
+            )}
           </div>
         </div>
       </nav>

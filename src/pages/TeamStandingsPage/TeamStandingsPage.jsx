@@ -15,6 +15,8 @@ export default function Standing() {
     getTeamStandings();
   }, [division]);
 
+  standings.sort((a, b) => a.place - b.place);
+
   return (
     <main className="team-standings-page">
       <h1>Standings {division} League</h1>

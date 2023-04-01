@@ -9,7 +9,7 @@ export default function AuthPage({ setUser, user }) {
   return (
     <main>
       <button
-        className="btn btn-danger"
+        className="btn btn-success mt-5"
         onClick={() => setShowSignUp(!showSignUp)}
       >
         {showSignUp ? "Log In" : "Sign Up"}

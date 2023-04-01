@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import * as playerStandingsApi from "../../utilities/player-standings-api";
 import "./PlayerStandingsPage.css";
 
@@ -12,7 +13,7 @@ export default function PlayerStandingsPage() {
       setStandings(standings);
     }
     getPlayerStandings();
-  }, []);
+  }, [division]);
 
   return (
     <main className="player-standings-page">
