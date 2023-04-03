@@ -6,9 +6,7 @@ import * as PlayerStats from "../../utilities/player-stats-api";
 
 export default function PlayerDetailPage({ user, setUser }) {
   const [player, setPlayer] = useState(null);
-
   const [editingRow, setEditingRow] = useState(false);
-
   const [newRow, setNewRow] = useState({
     week: 0,
     opp: "",
@@ -44,16 +42,12 @@ export default function PlayerDetailPage({ user, setUser }) {
 
   async function handleSaveRow(e) {
     e.preventDefault();
-    // let row;
     if (editingRow) {
       const updatedPlayer = await PlayerStats.updateRow(newRow._id, newRow);
-      // const updatedRows = rows.map((r) => (r._id === editingRow._id ? row : r));
-      // setRows(updatedRows);
       setEditingRow(false);
       setPlayer(updatedPlayer);
     } else {
       const updatedPlayer = await PlayerStats.addRow(newRow, player._id);
-      // setRows([...rows, row]);
       setPlayer(updatedPlayer);
     }
     setNewRow({
@@ -104,7 +98,6 @@ export default function PlayerDetailPage({ user, setUser }) {
                   <th>6B</th>
                   <th>HT</th>
                   <th>95+</th>
-                  {/* <th>Highlights</th> */}
                   <th>Points</th>
                   {user?.isAdmin ? (
                     <>
