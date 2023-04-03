@@ -2,7 +2,7 @@
 
 <div id="header" align="center">
 
-<img src="https://i.imgur.com/Cxz7d4M.png" width="800" height="400">
+<img src="https://i.imgur.com/Cxz7d4M.png" width="600" height="400">
     
 </div>
 
