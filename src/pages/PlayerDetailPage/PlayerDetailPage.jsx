@@ -108,7 +108,7 @@ export default function PlayerDetailPage({ user }) {
                       <td>{s.fourBull}</td>
                       <td>{s.fiveBull}</td>
                       <td>{s.sixBull}</td>
-                      <td>{s.hatTrick}</td>
+                      <td>{s.hatTricks}</td>
                       <td>{s.highlight}</td>
                       <td>{s.points}</td>
                       {user?.isAdmin ? (

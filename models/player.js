@@ -51,12 +51,12 @@ const playerStatSchema = new Schema({
     default: 0,
     required: true,
   },
-  hatTrick: {
+  hatTricks: {
     type: Number,
     default: 0,
     required: true,
   },
-  highlight: {
+  highlights: {
     type: Number,
     default: 0,
     required: true,
