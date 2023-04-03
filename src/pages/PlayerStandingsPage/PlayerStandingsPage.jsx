@@ -15,12 +15,31 @@ export default function PlayerStandingsPage() {
     getPlayerStandings();
   }, [division]);
 
-  const playerStats = standings.map((m, idx) => {
-    const stats = m.stats;
-    const totalWins = stats.reduce((acc, player) => acc + player.wins, 0);
-
-    return totalWins;
-  });
+  const proData = standings
+    .map((currentPlayer) => {
+      const playerStats = currentPlayer.stats.reduce(
+        (acc, match) => {
+          acc.wins += match.wins;
+          acc.losses += match.losses;
+          acc.points += match.points;
+          return acc;
+        },
+        { wins: 0, losses: 0, points: 0 }
+      );
+      return {
+        name: currentPlayer.name,
+        ...playerStats,
+      };
+    })
+    .sort((a, b) => {
+      if (b.wins !== a.wins) {
+        return b.wins - a.wins;
+      } else if (a.losses !== b.losses) {
+        return a.losses - b.losses;
+      } else {
+        return b.points - a.points;
+      }
+    });
 
   return (
     <main className="player-standings-page m-4 p-4">
@@ -38,33 +57,20 @@ export default function PlayerStandingsPage() {
               <th>Wins</th>
               <th>Losses</th>
               <th>Points</th>
-              <th>01 Avg</th>
-              <th>Cr Avg</th>
             </tr>
           </thead>
-          <tbody className="team-standings-table">
-            {standings.map((s) => (
-              <tr key={s._id}>
-                <td>{s.place}</td>
-                <td>
-                  <Link className="btn btn-info" to={`/players/${s._id}`}>
-                    {s.name}
-                  </Link>
-                </td>
-                <td>{s.points}</td>
-                <td>{playerStats}</td>
-                <td>{s.totalWins}</td>
-                <td>{s.legWonPct}</td>
-                <td>{s.zeroOneAvg}</td>
-                <td>{s.cricketAvg}</td>
+          <tbody>
+            {proData.map((player, idx) => (
+              <tr key={idx}>
+                <td>{idx + 1}</td>
+                <td>{player.name}</td>
+                <td>{player.wins}</td>
+                <td>{player.losses}</td>
+                <td>{player.points}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <img
-          src="https://s3-media0.fl.yelpcdn.com/bphoto/yxtRh-exLBymBNQnrCq8hQ/348s.jpg"
-          alt="xxx"
-        />
       </div>
     </main>
   );
