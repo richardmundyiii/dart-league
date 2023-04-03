@@ -4,23 +4,19 @@
 
 <img src="https://i.imgur.com/Cxz7d4M.png" width="600" height="400">
 
-
   <div id="description" align="center">
 
 # Meet Your Classmates
 
-### [CLICK TO DEMO](https://meetyourclassmates.herokuapp.com/)
+### [CLICK TO DEMO](https://dart-league-rdm.herokuapp.com/)
 
-##### Amar Pan
+##### Richard Mundy
 
-[![LinkedIn Badge](https://img.shields.io/badge/-@profpan396-blue?style=flat&logo=Linkedin&logoColor=black)](https://www.linkedin.com/in/profpan396/)
+[![LinkedIn Badge](https://img.shields.io/badge/-@richardmundy3-blue?style=flat&logo=Linkedin&logoColor=black)](https://www.linkedin.com/in/richardmundy3/)
 
 ## :pencil: Description
 
-Meet Your Classmates is a hub where students can get to know and relate to their peers via completion of short 3-question
-mini-surveys. By learning about others' backgrounds, previous experiences, and
-interests, an atmosphere of community is created that is conducive to higher
-levels of learning and success.
+All your dart league needs in one comprehensive site. From users ability to check their own stats and team rankings, to admins uploading stats, managing venues and teams, and uploading blog posts to keep players up-to-date.
 
   </div>
 
