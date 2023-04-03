@@ -15,6 +15,13 @@ export default function PlayerStandingsPage() {
     getPlayerStandings();
   }, [division]);
 
+  const playerStats = standings.map((m, idx) => {
+    const stats = m.stats;
+    const totalWins = stats.reduce((acc, player) => acc + player.wins, 0);
+
+    return totalWins;
+  });
+
   return (
     <main className="player-standings-page m-4 p-4">
       <h1>Player {division} Standings</h1>
@@ -35,25 +42,24 @@ export default function PlayerStandingsPage() {
               <th>Cr Avg</th>
             </tr>
           </thead>
-          {/* <tbody className="team-standings-table">
-            {playerStandings.map((s) => (
+          <tbody className="team-standings-table">
+            {standings.map((s) => (
               <tr key={s._id}>
                 <td>{s.place}</td>
                 <td>
-                  {s.name}
-                  <Link className="btn btn-info" to={`/teams/${s.teamName}`}>
-                    {s.teamName}
+                  <Link className="btn btn-info" to={`/players/${s._id}`}>
+                    {s.name}
                   </Link>
                 </td>
                 <td>{s.points}</td>
-                <td>{s.matchesWon}</td>
-                <td>{s.matchesPlayed - s.matchesWon}</td>
+                <td>{playerStats}</td>
+                <td>{s.totalWins}</td>
                 <td>{s.legWonPct}</td>
                 <td>{s.zeroOneAvg}</td>
                 <td>{s.cricketAvg}</td>
               </tr>
             ))}
-          </tbody> */}
+          </tbody>
         </table>
       </div>
     </main>
