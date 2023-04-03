@@ -87,7 +87,6 @@ const playerSchema = new Schema({
   },
   password: {
     type: String,
-    requrie: true,
   },
   stats: [playerStatSchema],
 });

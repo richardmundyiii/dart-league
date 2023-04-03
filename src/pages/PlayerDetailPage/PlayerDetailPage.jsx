@@ -9,8 +9,6 @@ export default function PlayerDetailPage({ user }) {
   const [rows, setRows] = useState((player && player.stats) || []);
   const [deletedRow, setDeletedRow] = useState({});
 
-  console.log(user);
-
   const [newRow, setNewRow] = useState({
     week: 0,
     opp: "",
@@ -262,9 +260,6 @@ export default function PlayerDetailPage({ user }) {
             </button>
           </form>
         </div>
-        {user.isAdmin && (
-          <p>Working Here ONLY if shown without anyone logged in...</p>
-        )}
         {/* {user.isAdmin ? <p>work</p> : <div>something here</div>} */}
       </main>
     </>
