@@ -19,10 +19,7 @@ function App() {
       <>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route
-            path="/auth"
-            element={<AuthPage setUser={setUser} user={user} />}
-          />
+          <Route path="/auth" element={<AuthPage setUser={setUser} />} />
           <Route path="/teamstandings" element={<TeamStandingsPage />} />
           <Route path="/teams/:teamId" element={<TeamDetailPage />} />
           <Route
