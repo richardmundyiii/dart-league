@@ -61,6 +61,10 @@ export default function PlayerStandingsPage() {
             ))}
           </tbody>
         </table>
+        <img
+          src="https://s3-media0.fl.yelpcdn.com/bphoto/yxtRh-exLBymBNQnrCq8hQ/348s.jpg"
+          alt="xxx"
+        />
       </div>
     </main>
   );
