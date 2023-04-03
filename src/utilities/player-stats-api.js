@@ -8,3 +8,7 @@ export async function addRow(playerData, id) {
 export async function deleteRow(id) {
   return sendRequest(`${BASE_URL}/${id}/stats`, "DELETE");
 }
+
+export async function updateRow(id, statsData) {
+  return sendRequest(`${BASE_URL}/${id}/stats`, "PUT", statsData);
+}

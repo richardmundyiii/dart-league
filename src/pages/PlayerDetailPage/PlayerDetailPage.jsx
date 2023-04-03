@@ -6,8 +6,8 @@ import * as PlayerStats from "../../utilities/player-stats-api";
 
 export default function PlayerDetailPage({ user }) {
   const [player, setPlayer] = useState(null);
-  const [rows, setRows] = useState((player && player.stats) || []);
-  const [deletedRow, setDeletedRow] = useState({});
+
+  const [editingRow, setEditingRow] = useState(false);
 
   const [newRow, setNewRow] = useState({
     week: 0,
@@ -21,7 +21,7 @@ export default function PlayerDetailPage({ user }) {
     fiveBulls: 0,
     sixBulls: 0,
     hatTricks: 0,
-    highlights: 0,
+    nineFivePlus: 0,
     points: 0,
   });
 
@@ -33,7 +33,7 @@ export default function PlayerDetailPage({ user }) {
       setPlayer(player);
     }
     getPlayer();
-  }, [playerId, rows, deletedRow]);
+  }, [playerId]);
 
   function handleInputChange(e) {
     setNewRow({
@@ -44,9 +44,18 @@ export default function PlayerDetailPage({ user }) {
 
   async function handleSaveRow(e) {
     e.preventDefault();
-    const row = await PlayerStats.addRow(newRow, player._id);
-    const updateRow = [...rows, row];
-    setRows(updateRow);
+    // let row;
+    if (editingRow) {
+      const updatedPlayer = await PlayerStats.updateRow(newRow._id, newRow);
+      // const updatedRows = rows.map((r) => (r._id === editingRow._id ? row : r));
+      // setRows(updatedRows);
+      setEditingRow(false);
+      setPlayer(updatedPlayer);
+    } else {
+      const updatedPlayer = await PlayerStats.addRow(newRow, player._id);
+      // setRows([...rows, row]);
+      setPlayer(updatedPlayer);
+    }
     setNewRow({
       week: 0,
       opp: "",
@@ -59,14 +68,19 @@ export default function PlayerDetailPage({ user }) {
       fiveBulls: 0,
       sixBulls: 0,
       hatTricks: 0,
-      highlights: 0,
+      nineFivePlus: 0,
       points: 0,
     });
   }
 
+  async function handleEditClick(row) {
+    setEditingRow(true);
+    setNewRow({ ...row });
+  }
+
   async function handleDeleteClick(id) {
-    const row = await PlayerStats.deleteRow(id);
-    setDeletedRow(row);
+    const updatedPlayer = await PlayerStats.deleteRow(id);
+    setPlayer(updatedPlayer);
   }
 
   return (
@@ -90,7 +104,16 @@ export default function PlayerDetailPage({ user }) {
                   <th>6B</th>
                   <th>HT</th>
                   <th>95+</th>
+                  {/* <th>Highlights</th> */}
                   <th>Points</th>
+                  {user?.isAdmin ? (
+                    <>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </>
+                  ) : (
+                    <></>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -102,24 +125,34 @@ export default function PlayerDetailPage({ user }) {
                       <td>{s.opp}</td>
                       <td>{s.wins}</td>
                       <td>{s.losses}</td>
-                      <td>{s.sevenMark}</td>
-                      <td>{s.eightMark}</td>
-                      <td>{s.nineMark}</td>
-                      <td>{s.fourBull}</td>
-                      <td>{s.fiveBull}</td>
-                      <td>{s.sixBull}</td>
+                      <td>{s.sevenMarks}</td>
+                      <td>{s.eightMarks}</td>
+                      <td>{s.nineMarks}</td>
+                      <td>{s.fourBulls}</td>
+                      <td>{s.fiveBulls}</td>
+                      <td>{s.sixBulls}</td>
                       <td>{s.hatTricks}</td>
-                      <td>{s.highlight}</td>
+                      <td>{s.nineFivePlus}</td>
                       <td>{s.points}</td>
                       {user?.isAdmin ? (
-                        <td>
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => handleDeleteClick(s._id)}
-                          >
-                            Delete
-                          </button>
-                        </td>
+                        <>
+                          <td>
+                            <button
+                              className="btn btn-warning"
+                              onClick={() => handleEditClick(s)}
+                            >
+                              Edit
+                            </button>
+                          </td>
+                          <td>
+                            <button
+                              className="btn btn-danger"
+                              onClick={() => handleDeleteClick(s._id)}
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </>
                       ) : (
                         <></>
                       )}
@@ -129,7 +162,6 @@ export default function PlayerDetailPage({ user }) {
             </table>
           </div>
         </div>
-        {/* // for admin only */}
         {user?.isAdmin ? (
           <div className="card m-4 p-3">
             <form onSubmit={handleSaveRow}>
@@ -238,15 +270,15 @@ export default function PlayerDetailPage({ user }) {
                         onChange={handleInputChange}
                         type="number"
                         value={newRow.hatTricks}
-                        name="hatTrick"
+                        name="hatTricks"
                       />
                     </td>
                     <td>
                       <input
                         onChange={handleInputChange}
                         type="number"
-                        value={newRow.highlights}
-                        name="highlights"
+                        value={newRow.nineFivePlus}
+                        name="nineFivePlus"
                       />
                     </td>
                     <td>
@@ -260,9 +292,15 @@ export default function PlayerDetailPage({ user }) {
                   </tr>
                 </tbody>
               </table>
-              <button className="btn btn-info" style={{ width: "100%" }}>
-                Save
-              </button>
+              {editingRow ? (
+                <button className="btn btn-primary" style={{ width: "100%" }}>
+                  Update
+                </button>
+              ) : (
+                <button className="btn btn-info" style={{ width: "100%" }}>
+                  Save
+                </button>
+              )}
             </form>
           </div>
         ) : (

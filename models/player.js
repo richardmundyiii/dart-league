@@ -9,7 +9,6 @@ const playerStatSchema = new Schema({
   opp: {
     type: String,
     default: "",
-    required: true,
   },
   wins: {
     type: Number,
@@ -21,32 +20,32 @@ const playerStatSchema = new Schema({
     default: 0,
     required: true,
   },
-  sevenMark: {
+  sevenMarks: {
     type: Number,
     default: 0,
     required: true,
   },
-  eightMark: {
+  eightMarks: {
     type: Number,
     default: 0,
     required: true,
   },
-  nineMark: {
+  nineMarks: {
     type: Number,
     default: 0,
     required: true,
   },
-  fourBull: {
+  fourBulls: {
     type: Number,
     default: 0,
     required: true,
   },
-  fiveBull: {
+  fiveBulls: {
     type: Number,
     default: 0,
     required: true,
   },
-  sixBull: {
+  sixBulls: {
     type: Number,
     default: 0,
     required: true,
@@ -56,10 +55,9 @@ const playerStatSchema = new Schema({
     default: 0,
     required: true,
   },
-  highlights: {
+  nineFivePlus: {
     type: Number,
     default: 0,
-    required: true,
   },
   points: {
     type: Number,
