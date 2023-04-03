@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom";
 import * as PlayerStats from "../../utilities/player-stats-api";
 
 export default function PlayerDetailPage({ user }) {
-  const index = 0;
   const [player, setPlayer] = useState(null);
   const [rows, setRows] = useState((player && player.stats) || []);
   const [deletedRow, setDeletedRow] = useState({});
+
+  console.log(user);
 
   const [newRow, setNewRow] = useState({
     week: 0,
@@ -69,8 +70,6 @@ export default function PlayerDetailPage({ user }) {
     const row = await PlayerStats.deleteRow(id);
     setDeletedRow(row);
   }
-
-  console.log(user);
 
   return (
     <>
@@ -263,13 +262,10 @@ export default function PlayerDetailPage({ user }) {
             </button>
           </form>
         </div>
-        {user.isAdmin ? (
-          <p>work</p>
-        ) : (
-          <>
-            <p>finding user.admin </p>
-          </>
+        {user.isAdmin && (
+          <p>Working Here ONLY if shown without anyone logged in...</p>
         )}
+        {/* {user.isAdmin ? <p>work</p> : <div>something here</div>} */}
       </main>
     </>
   );
