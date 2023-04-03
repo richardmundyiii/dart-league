@@ -34,11 +34,11 @@ export default function Homepage() {
             <div className="card-body text-center">
               <h4>Dartvernugen</h4>
               <h5>Champions</h5>
-              <h7>Captain: Darin Heath</h7>
+              <h6>Captain: Darin Heath</h6>
               <hr />
               <h4>Trip-n-Dubs</h4>
               <h5>Regular Season Best Record</h5>
-              <h7>Captain: Kris MacKellar</h7>
+              <h6>Captain: Kris MacKellar</h6>
             </div>
           </div>
           <div className="card" id="card-22">
@@ -48,11 +48,11 @@ export default function Homepage() {
             <div className="card-body text-center">
               <h4>Bulls Deep</h4>
               <h5>Champions</h5>
-              <h7>Captain: Richard Mundy</h7>
+              <h6>Captain: Richard Mundy</h6>
               <hr />
               <h4>Bulls Deep</h4>
               <h5>Regular Season Best Record</h5>
-              <h7>Captain: Richard Mundy</h7>
+              <h6>Captain: Richard Mundy</h6>
             </div>
           </div>
         </div>

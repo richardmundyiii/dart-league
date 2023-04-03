@@ -20,7 +20,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/auth" element={<AuthPage setUser={setUser} />} />
-          <Route path="/teamstandings" element={<TeamStandingsPage />} />
+          <Route
+            path="/teamstandings"
+            element={<TeamStandingsPage user={user} />}
+          />
           <Route path="/teams/:teamId" element={<TeamDetailPage />} />
           <Route
             path="/players/:playerId"

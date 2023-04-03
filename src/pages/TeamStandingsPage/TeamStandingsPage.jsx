@@ -4,7 +4,7 @@ import * as standingsApi from "../../utilities/team-standings-api";
 import * as PlayerApi from "../../utilities/player-api";
 import "./TeamStandingsPage.css";
 
-export default function Standing() {
+export default function Standing({ user }) {
   const [division, setDivision] = useState("A");
   const [standings, setStandings] = useState([]);
   const [player, setPlayer] = useState(null);
@@ -67,39 +67,48 @@ export default function Standing() {
           </tbody>
         </table>
       </div>
-      <div className="card p-5 m-3">
-        <div className="card-header">
-          <h2 className="'m-2">Create Player</h2>
+      {user?.isAdmin ? (
+        <div className="card p-5 m-3">
+          <div className="card-header">
+            <h2 className="'m-2">Create Player</h2>
+          </div>
+          <form onSubmit={handleCreatePlayerClick}>
+            <input
+              type="text"
+              placeholder="Player Name (last, first)"
+              className="form-control"
+            />
+            <select className="form-control">
+              {standings.map((team) => (
+                <option name={team.teamName} value={team._id} key={team._id}>
+                  {team.teamName}
+                </option>
+              ))}
+            </select>
+            <input
+              type="text"
+              value={division}
+              className="form-control"
+              disabled
+            />
+            <input
+              type="email"
+              className="form-control"
+              name="email"
+              placeholder="Player Email"
+            />
+            <button
+              type="submit"
+              className="btn btn-secondary"
+              style={{ width: "100%" }}
+            >
+              Add Player
+            </button>
+          </form>
         </div>
-        <form onSubmit={handleCreatePlayerClick}>
-          <input
-            type="text"
-            placeholder="Player Name"
-            className="form-control"
-          />
-          <select className="form-control">
-            {standings.map((team) => (
-              <option name={team.teamName} value={team._id} key={team._id}>
-                {team.teamName}
-              </option>
-            ))}
-          </select>
-          <input
-            type="text"
-            value={division}
-            className="form-control"
-            disabled
-          />
-          <input type="email" className="form-control" name="email" />
-          <button
-            type="submit"
-            className="btn btn-secondary"
-            style={{ width: "100%" }}
-          >
-            Add Player
-          </button>
-        </form>
-      </div>
+      ) : (
+        <></>
+      )}
     </main>
   );
 }
