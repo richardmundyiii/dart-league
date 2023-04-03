@@ -15,21 +15,27 @@ function App() {
 
   return (
     <main className="App">
-      <NavBar user={user} />
+      <NavBar user={user} setUser={setUser} />
       <>
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Homepage setUser={setUser} />} />
           <Route path="/auth" element={<AuthPage setUser={setUser} />} />
           <Route
             path="/teamstandings"
-            element={<TeamStandingsPage user={user} />}
+            element={<TeamStandingsPage user={user} setUser={setUser} />}
           />
-          <Route path="/teams/:teamId" element={<TeamDetailPage />} />
+          <Route
+            path="/teams/:teamId"
+            element={<TeamDetailPage setUser={setUser} />}
+          />
           <Route
             path="/players/:playerId"
-            element={<PlayerDetailPage user={user} />}
+            element={<PlayerDetailPage user={user} setUser={setUser} />}
           />
-          <Route path="/playerstandings" element={<PlayerStandingsPage />} />
+          <Route
+            path="/playerstandings"
+            element={<PlayerStandingsPage setUser={setUser} />}
+          />
         </Routes>
       </>
     </main>

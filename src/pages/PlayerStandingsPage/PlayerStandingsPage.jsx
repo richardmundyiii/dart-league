@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import * as playerStandingsApi from "../../utilities/player-standings-api";
 import "./PlayerStandingsPage.css";
 
-export default function PlayerStandingsPage() {
+export default function PlayerStandingsPage({ user, setUser }) {
   const [division, setDivision] = useState("A");
   const [standings, setStandings] = useState([]);
 

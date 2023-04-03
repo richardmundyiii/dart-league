@@ -4,7 +4,7 @@ import * as playerDetailApi from "../../utilities/player-detail-api";
 import { useParams } from "react-router-dom";
 import * as PlayerStats from "../../utilities/player-stats-api";
 
-export default function PlayerDetailPage({ user }) {
+export default function PlayerDetailPage({ user, setUser }) {
   const [player, setPlayer] = useState(null);
 
   const [editingRow, setEditingRow] = useState(false);

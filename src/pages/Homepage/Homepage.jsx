@@ -3,7 +3,7 @@ import Camellia from "../../assets/images/camellia23.jpg";
 import TurkeyShoot from "../../assets/images/turkeyShoot.jpg";
 import StocktonRB from "../../assets/images/stocktonRB.jpg";
 
-export default function Homepage() {
+export default function Homepage({ setUser }) {
   return (
     <>
       <div id="mainLogo">

@@ -4,7 +4,7 @@ import * as standingsApi from "../../utilities/team-standings-api";
 import * as PlayerApi from "../../utilities/player-api";
 import "./TeamStandingsPage.css";
 
-export default function Standing({ user }) {
+export default function Standing({ user, setUser }) {
   const [division, setDivision] = useState("A");
   const [standings, setStandings] = useState([]);
   const [player, setPlayer] = useState(null);

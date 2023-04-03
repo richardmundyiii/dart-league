@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import * as teamDetailApi from "../../utilities/team-detail-api";
 import "./TeamDetailPage.css";
 
-export default function TeamDetailPage() {
+export default function TeamDetailPage({ user, setUser }) {
   const [team, setTeam] = useState(null);
   const [players, setPlayers] = useState([]);
 
