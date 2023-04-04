@@ -10,7 +10,6 @@ export default function Homepage({ setUser }) {
         <img src={Logo} alt="Santa Cruz Dart League Logo" className="w-25" />
       </div>
       <div id="upcomingEvents" className="text-center">
-        {/* <h3 class="text-cente">Upcoming Events</h3> */}
         <img src={Camellia} alt="Camellia Classic Flyer" className="w-25" />
         <img
           src={TurkeyShoot}

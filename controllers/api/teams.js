@@ -9,9 +9,8 @@ module.exports = {
 async function forTeamDetail(req, res) {
   try {
     const team = await Teams.findOne({ name: req.params.id });
-    console.log(team._id);
     const players = await Players.find({ team: team._id });
-    res.json(players);
+    res.json({ players, team });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -20,6 +19,7 @@ async function forTeamDetail(req, res) {
 async function teamDetails(req, res) {
   try {
     const team = Teams.findOne({ name: req.params.id });
+    res.json(team);
   } catch (err) {
     res.status(400).json(err);
   }

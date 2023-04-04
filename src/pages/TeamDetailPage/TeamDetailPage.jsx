@@ -11,53 +11,41 @@ export default function TeamDetailPage({ user, setUser }) {
 
   useEffect(() => {
     async function getTeamDetail() {
-      const players = await teamDetailApi.getTeamDetail(teamId);
+      const { team, players } = await teamDetailApi.getTeamDetail(teamId);
+      setTeam(team);
       setPlayers(players);
     }
     getTeamDetail();
   }, [teamId]);
 
-  if (!teamId) return null;
+  if (!teamId || !team) return null;
 
   return (
     <>
       <main>
         <div className="card m-4 p-3">
           <div className="card-header">
-            <h1>{teamId}</h1>
+            <h1>{team.name}</h1>
           </div>
           <div className="card-body">
-            <table className="table table-striped mt-3">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Wins</th>
-                  <th>Losses</th>
-                  <th>4B</th>
-                  <th>5B</th>
-                  <th>6B</th>
-                  <th>7M</th>
-                  <th>8M</th>
-                  <th>9M</th>
-                  <th>95+</th>
-                  <th>Hightlight Points</th>
-                </tr>
-              </thead>
-              <tbody className="team-detail-table">
-                {players.map((p, idx) => (
-                  <tr key={idx}>
-                    <td>
-                      <Link
-                        className="btn btn-warning"
-                        to={`/players/${p._id}`}
-                      >
-                        {p.name}
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="team-info p-3">
+              <img src={team.imgUrl} alt="" className="team-image" />
+              <div className="p-5">
+                <h3>{team.venue}</h3>
+                <p>{team.address}</p>
+              </div>
+            </div>
+            <div className="team-players">
+              {players.map((p, idx) => (
+                <div key={idx} style={{ margin: "2vmin" }}>
+                  <p>
+                    <Link className="btn btn-warning" to={`/players/${p._id}`}>
+                      {p.name}
+                    </Link>
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </main>

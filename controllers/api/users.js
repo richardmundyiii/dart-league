@@ -9,7 +9,6 @@ module.exports = {
 };
 
 function checkToken(req, res) {
-  console.log("req.user", req.user);
   res.json(req.exp);
 }
 
@@ -18,7 +17,6 @@ async function create(req, res) {
     // Add the user to the db
     const user = await User.create(req.body);
     const token = createJWT(user);
-    console.log(user, token);
     res.json(token);
   } catch (err) {
     res.status(400).json(err);
@@ -31,7 +29,6 @@ async function login(req, res) {
   const match = await bcrypt.compare(req.body.password, user.password);
   if (!match) throw new Error();
   const token = createJWT(user);
-  console.log(user, token);
   res.json(token);
 }
 
