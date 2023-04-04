@@ -63,31 +63,33 @@ https://i.imgur.com/NUNr3ND.png
 ## :fire: Getting Started
 
 <details open>
-  <summary> How to Create a Post </summary>
-    1. Type in your answers to each of the 3 randomly-generated mini-survey questions.
-    2. Click on "Add Survey" to post your responses so others may see them.
-    3. Click on the "X" in the bottom-right corner to delete a post.
+  <summary> Adding Player </summary>
+    1. First you will need to login from the navbar.
+    2. Assuming you had isAdmin rights, you can navigate to Team Standings
+    3. From here you will see 'Add A Player' form. 
+    4. Select which division and team for the new player.
+    5. Click save when all data is filld out.
 </details>
 
 <details>
-  <summary> How to Interact With Others' Posts </summary>
-    1. Posts may be "liked" or "disliked" by clicking on the thumbs up or down button on their card.
-    2. To reveal the author of a post, hover over the `Who could it possibly be?` button.
-    3. To see more posts by the same user, click on the revealed username and profile picture.
+  <summary> How to Add/Edit Player Stats </summary>
+    1. Ensure you are logged in from the navbar.
+    2. Go to Teams Standings Page
+    3. Select a team
+    4. Select Player
+    5. Edit player stats as needed or delete.
 </details>
 
-<details open>
-  <summary> Trello Board </summary>
-  <a href="https://trello.com/b/x4ViComX/meet-your-classmates-project-4"
-    > https://trello.com/b/x4ViComX/meet-your-classmates-project-4 </a
-  >
-</details>
+</div>
 
-<details open>
-  <summary> Deployed Link (Heroku) </summary>
-  <a href="https://meetyourclassmates.herokuapp.com/"
-    > https://meetyourclassmates.herokuapp.com/ </a
-  >
-</details>
+<div>
+
+## :satellite: Upcoming Features
+
+- [:star:] Animations on sliding buttons
+
+- [:x:] Comment functionality on posts to encourage discussion
+
+- [:x:] ~~Tinder API Integration~~
 
 </div>
