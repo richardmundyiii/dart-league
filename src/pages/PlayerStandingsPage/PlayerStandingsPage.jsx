@@ -21,10 +21,18 @@ export default function PlayerStandingsPage({ user, setUser }) {
         (acc, match) => {
           acc.wins += match.wins;
           acc.losses += match.losses;
-          acc.points += match.points;
+          acc.cricketHighlights += match.cricketHighlights;
+          acc.zeroOneHighlights += match.zeroOneHighlights;
+          acc.zeroOnePoints += match.zeroOnePoints;
           return acc;
         },
-        { wins: 0, losses: 0, points: 0 }
+        {
+          wins: 0,
+          losses: 0,
+          cricketHighlights: 0,
+          zeroOneHighlights: 0,
+          zeroOnePoints: 0,
+        }
       );
       return {
         _id: currentPlayer._id,
@@ -38,7 +46,7 @@ export default function PlayerStandingsPage({ user, setUser }) {
       } else if (a.losses !== b.losses) {
         return a.losses - b.losses;
       } else {
-        return b.points - a.points;
+        return b.zeroOnepoints - a.zeroOnepoints;
       }
     });
 
@@ -57,7 +65,9 @@ export default function PlayerStandingsPage({ user, setUser }) {
               <th>Player</th>
               <th>Wins</th>
               <th>Losses</th>
-              <th>Points</th>
+              <th>Cr. Highlights</th>
+              <th>'01 Highlights</th>
+              <th>'01 Points'</th>
             </tr>
           </thead>
           <tbody>
@@ -75,7 +85,9 @@ export default function PlayerStandingsPage({ user, setUser }) {
                 </td>
                 <td>{player.wins}</td>
                 <td>{player.losses}</td>
-                <td>{player.points}</td>
+                <td>{player.cricketHighlights}</td>
+                <td>{player.zeroOneHighlights}</td>
+                <td>{player.zeroOnePoints}</td>
               </tr>
             ))}
           </tbody>
