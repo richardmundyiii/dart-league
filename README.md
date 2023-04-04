@@ -19,7 +19,6 @@
 All your dart league needs in one comprehensive site. From users ability to check their own stats and team rankings, to admins uploading stats, managing venues and teams, and uploading blog posts to keep players up-to-date.
 
   </div>
-https://i.imgur.com/NUNr3ND.png
   </div>
 
 <div>
