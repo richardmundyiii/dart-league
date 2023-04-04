@@ -27,6 +27,7 @@ export default function PlayerStandingsPage({ user, setUser }) {
         { wins: 0, losses: 0, points: 0 }
       );
       return {
+        _id: currentPlayer._id,
         name: currentPlayer.name,
         ...playerStats,
       };
@@ -63,7 +64,15 @@ export default function PlayerStandingsPage({ user, setUser }) {
             {proData.map((player, idx) => (
               <tr key={idx}>
                 <td>{idx + 1}</td>
-                <td>{player.name}</td>
+                <td>
+                  <Link
+                    to={`/players/${player._id}`}
+                    className="btn btn-success"
+                    style={{ width: "100%" }}
+                  >
+                    {player.name}
+                  </Link>
+                </td>
                 <td>{player.wins}</td>
                 <td>{player.losses}</td>
                 <td>{player.points}</td>
