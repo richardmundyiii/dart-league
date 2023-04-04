@@ -86,10 +86,10 @@ https://i.imgur.com/NUNr3ND.png
 
 ## :satellite: Upcoming Features
 
-- [:star:] Animations on sliding buttons
+- [:x:] Add admin blog
 
-- [:x:] Comment functionality on posts to encourage discussion
+- [:x:] Create user profiles
 
-- [:x:] ~~Tinder API Integration~~
+- [:x:] Connect Stripe for payments
 
 </div>
