@@ -29,7 +29,7 @@ https://i.imgur.com/NUNr3ND.png
 |        Description        | Screenshot                                                |
 | :-----------------------: | --------------------------------------------------------- |
 |       <h3>ERD</h3>        | <img src="https://i.imgur.com/1sFJuij.png" width="700" /> |
-|    <h3>Wireframes</h3>    | <img src='#'> width="700" />                              |
+|    <h3>Wireframes</h3>    | <img src='https://i.imgur.com/QKFOTwV.png' width="700" /> |
 |  <h3>Team Standings</h3>  | <img src='https://i.imgur.com/zAZTKqU.png' width="700" /> |
 | <h3>Player Standings</h3> | <img src='https://i.imgur.com/NUNr3ND.png' width="700" /> |
 |    <h3>Admin Edit</h3>    | <img src='https://i.imgur.com/4mkWhx8.png' width="700" /> |
