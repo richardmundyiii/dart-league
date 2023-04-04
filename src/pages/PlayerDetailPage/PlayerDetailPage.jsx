@@ -12,15 +12,9 @@ export default function PlayerDetailPage({ user, setUser }) {
     opp: "",
     wins: 0,
     losses: 0,
-    sevenMarks: 0,
-    eightMarks: 0,
-    nineMarks: 0,
-    fourBulls: 0,
-    fiveBulls: 0,
-    sixBulls: 0,
-    hatTricks: 0,
-    nineFivePlus: 0,
-    points: 0,
+    cricketHighlights: 0,
+    zeroOneHighlights: 0,
+    zeroOnePoints: 0,
   });
 
   const { playerId } = useParams();
@@ -55,15 +49,9 @@ export default function PlayerDetailPage({ user, setUser }) {
       opp: "",
       wins: 0,
       losses: 0,
-      sevenMarks: 0,
-      eightMarks: 0,
-      nineMarks: 0,
-      fourBulls: 0,
-      fiveBulls: 0,
-      sixBulls: 0,
-      hatTricks: 0,
-      nineFivePlus: 0,
-      points: 0,
+      cricketHighlights: 0,
+      zeroOneHighlights: 0,
+      zeroOnePoints: 0,
     });
   }
 
@@ -90,15 +78,9 @@ export default function PlayerDetailPage({ user, setUser }) {
                   <th>Opponent</th>
                   <th>Won</th>
                   <th>Losses</th>
-                  <th>7M</th>
-                  <th>8M</th>
-                  <th>9M</th>
-                  <th>4B</th>
-                  <th>5B</th>
-                  <th>6B</th>
-                  <th>HT</th>
-                  <th>95+</th>
-                  <th>Points</th>
+                  <th>Cricket Highlights</th>
+                  <th>'01 Highlights</th>
+                  <th>'01 Points</th>
                   {user?.isAdmin ? (
                     <>
                       <th>Edit</th>
@@ -118,15 +100,9 @@ export default function PlayerDetailPage({ user, setUser }) {
                       <td>{s.opp}</td>
                       <td>{s.wins}</td>
                       <td>{s.losses}</td>
-                      <td>{s.sevenMarks}</td>
-                      <td>{s.eightMarks}</td>
-                      <td>{s.nineMarks}</td>
-                      <td>{s.fourBulls}</td>
-                      <td>{s.fiveBulls}</td>
-                      <td>{s.sixBulls}</td>
-                      <td>{s.hatTricks}</td>
-                      <td>{s.nineFivePlus}</td>
-                      <td>{s.points}</td>
+                      <td>{s.cricketHighlights}</td>
+                      <td>{s.zeroOneHighlights}</td>
+                      <td>{s.zeroOnePoints}</td>
                       {user?.isAdmin ? (
                         <>
                           <td>
@@ -165,15 +141,9 @@ export default function PlayerDetailPage({ user, setUser }) {
                     <th>Opp</th>
                     <th>Wins</th>
                     <th>Losses</th>
-                    <th>7M</th>
-                    <th>8M</th>
-                    <th>9M</th>
-                    <th>4B</th>
-                    <th>5B</th>
-                    <th>6B</th>
-                    <th>HT</th>
-                    <th>95+</th>
-                    <th>Points</th>
+                    <th>Cricket Highlights</th>
+                    <th>'01 Highlights</th>
+                    <th>'01 Points</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -214,72 +184,24 @@ export default function PlayerDetailPage({ user, setUser }) {
                       <input
                         onChange={handleInputChange}
                         type="number"
-                        value={newRow.sevenMarks}
-                        name="sevenMarks"
+                        value={newRow.cricketHighlights}
+                        name="cricketHighlights"
                       />
                     </td>
                     <td>
                       <input
                         onChange={handleInputChange}
                         type="number"
-                        value={newRow.eightMarks}
-                        name="eightMarks"
+                        value={newRow.zeroOneHighlights}
+                        name="zeroOneHighlights"
                       />
                     </td>
                     <td>
                       <input
                         onChange={handleInputChange}
                         type="number"
-                        value={newRow.nineMarks}
-                        name="nineMarks"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="number"
-                        value={newRow.fourBulls}
-                        name="fourBulls"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="number"
-                        value={newRow.fiveBulls}
-                        name="fiveBulls"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="number"
-                        value={newRow.sixBulls}
-                        name="sixBulls"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="number"
-                        value={newRow.hatTricks}
-                        name="hatTricks"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="number"
-                        value={newRow.nineFivePlus}
-                        name="nineFivePlus"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        onChange={handleInputChange}
-                        type="number"
-                        value={newRow.points}
-                        name="points"
+                        value={newRow.zeroOnePoints}
+                        name="zeroOnePoints"
                       />
                     </td>
                   </tr>

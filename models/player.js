@@ -20,46 +20,16 @@ const playerStatSchema = new Schema({
     default: 0,
     required: true,
   },
-  sevenMarks: {
+  cricketHighlights: {
     type: Number,
     default: 0,
     required: true,
   },
-  eightMarks: {
-    type: Number,
-    default: 0,
-    required: true,
-  },
-  nineMarks: {
-    type: Number,
-    default: 0,
-    required: true,
-  },
-  fourBulls: {
-    type: Number,
-    default: 0,
-    required: true,
-  },
-  fiveBulls: {
-    type: Number,
-    default: 0,
-    required: true,
-  },
-  sixBulls: {
-    type: Number,
-    default: 0,
-    required: true,
-  },
-  hatTricks: {
-    type: Number,
-    default: 0,
-    required: true,
-  },
-  nineFivePlus: {
+  zeroOneHighlights: {
     type: Number,
     default: 0,
   },
-  points: {
+  zeroOnePoints: {
     type: Number,
     default: 0,
     required: true,

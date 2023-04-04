@@ -1,4 +1,5 @@
 #add-player-stats-row input {
-  width: 5vmin;
+  width: 8vmin;
   color: black;
+  text-align: center;
 }
