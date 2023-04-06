@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const playerStatSchema = new Schema({
   week: {
     type: Number,
-    required: true,
   },
   opp: {
     type: String,
@@ -13,17 +12,14 @@ const playerStatSchema = new Schema({
   wins: {
     type: Number,
     default: 0,
-    required: true,
   },
   losses: {
     type: Number,
     default: 0,
-    required: true,
   },
   cricketHighlights: {
     type: Number,
     default: 0,
-    required: true,
   },
   zeroOneHighlights: {
     type: Number,
@@ -32,7 +28,6 @@ const playerStatSchema = new Schema({
   zeroOnePoints: {
     type: Number,
     default: 0,
-    required: true,
   },
 });
 

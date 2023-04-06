@@ -6,6 +6,8 @@ import "./PlayerStandingsPage.css";
 export default function PlayerStandingsPage({ user, setUser }) {
   const [division, setDivision] = useState("A");
   const [standings, setStandings] = useState([]);
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [sortBy, setSortBy] = useState("Win %");
 
   useEffect(() => {
     async function getPlayerStandings() {
@@ -36,6 +38,7 @@ export default function PlayerStandingsPage({ user, setUser }) {
       );
       playerStats.winPercentage =
         (playerStats.wins / (playerStats.wins + playerStats.losses)) * 100;
+
       return {
         _id: currentPlayer._id,
         name: currentPlayer.name,
@@ -43,16 +46,39 @@ export default function PlayerStandingsPage({ user, setUser }) {
       };
     })
     .sort((a, b) => {
-      if (b.winPercentage !== a.winPercentage) {
-        return b.winPercentage - a.winPercentage;
-      } else if (b.win !== a.wins) {
-        return b.wins - a.wins;
-      } else if (a.losses !== b.losses) {
-        return a.losses - b.losses;
-      } else {
-        return b.zeroOnepoints - a.zeroOnepoints;
+      if (sortOrder === "desc") {
+        [a, b] = [b, a];
+      }
+      switch (sortBy) {
+        case "Place":
+          return proData.indexOf(a) - proData.indexOf(b);
+        case "Player":
+          return a.name.localeCompare(b.name);
+        case "Wins":
+          return b.wins - a.wins;
+        case "Losses":
+          return a.losses - b.losses;
+        case "Win %":
+          return b.winPercentage - a.winPercentage;
+        case "Cr. Highlights":
+          return b.cricketHighlights - a.cricketHighlights;
+        case "'01 Highlights":
+          return b.zeroOneHighlights - a.zeroOneHighlights;
+        case "'01 Points":
+          return b.zeroOnePoints - a.zeroOnePoints;
+        default:
+          return 0;
       }
     });
+
+  function handleSort(name) {
+    if (sortBy === name) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortOrder("asc");
+      setSortBy(name);
+    }
+  }
 
   return (
     <main className="player-standings-page m-4 p-4">
@@ -67,12 +93,16 @@ export default function PlayerStandingsPage({ user, setUser }) {
             <tr>
               <th>Place</th>
               <th>Player</th>
-              <th>Wins</th>
-              <th>Losses</th>
-              <th>Win %</th>
-              <th>Cr. Highlights</th>
-              <th>'01 Highlights</th>
-              <th>'01 Points'</th>
+              <th onClick={() => handleSort("Wins")}>Wins</th>
+              <th onClick={() => handleSort("Losses")}>Losses</th>
+              <th onClick={() => handleSort("Win %")}>Win %</th>
+              <th onClick={() => handleSort("Cr. Highlights")}>
+                Cr. Highlights
+              </th>
+              <th onClick={() => handleSort("'01 Highlights")}>
+                01 Highlights
+              </th>
+              <th onClick={() => handleSort("'01 Points")}>01 Points</th>
             </tr>
           </thead>
           <tbody>
