@@ -34,6 +34,8 @@ export default function PlayerStandingsPage({ user, setUser }) {
           zeroOnePoints: 0,
         }
       );
+      playerStats.winPercentage =
+        (playerStats.wins / (playerStats.wins + playerStats.losses)) * 100;
       return {
         _id: currentPlayer._id,
         name: currentPlayer.name,
@@ -41,7 +43,9 @@ export default function PlayerStandingsPage({ user, setUser }) {
       };
     })
     .sort((a, b) => {
-      if (b.wins !== a.wins) {
+      if (b.winPercentage !== a.winPercentage) {
+        return b.winPercentage - a.winPercentage;
+      } else if (b.win !== a.wins) {
         return b.wins - a.wins;
       } else if (a.losses !== b.losses) {
         return a.losses - b.losses;
@@ -65,6 +69,7 @@ export default function PlayerStandingsPage({ user, setUser }) {
               <th>Player</th>
               <th>Wins</th>
               <th>Losses</th>
+              <th>Win %</th>
               <th>Cr. Highlights</th>
               <th>'01 Highlights</th>
               <th>'01 Points'</th>
@@ -85,6 +90,7 @@ export default function PlayerStandingsPage({ user, setUser }) {
                 </td>
                 <td>{player.wins}</td>
                 <td>{player.losses}</td>
+                <td>{player.winPercentage.toFixed(2)}%</td>
                 <td>{player.cricketHighlights}</td>
                 <td>{player.zeroOneHighlights}</td>
                 <td>{player.zeroOnePoints}</td>
