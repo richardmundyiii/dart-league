@@ -51,6 +51,16 @@ export default function NavBar({ user, setUser }) {
                   Player Standings
                 </a>
               </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  href="/news"
+                  role="button"
+                  aria-expanded="false"
+                >
+                  News
+                </a>
+              </li>
             </ul>
             {!user || !user.isAdmin ? (
               <button className="btn btn-danger">

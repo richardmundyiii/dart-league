@@ -65,8 +65,6 @@ export default function PlayerDetailPage({ user, setUser }) {
     setPlayer(updatedPlayer);
   }
 
-  console.log(player);
-
   return (
     <>
       <main>

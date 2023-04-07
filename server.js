@@ -30,6 +30,7 @@ app.use("/api/teams", require("./routes/api/teams"));
 app.use("/api/players", require("./routes/api/player"));
 app.use("/api/playerstats", require("./routes/api/playerstats"));
 app.use("/api/playerstandings", require("./routes/api/playerStandings"));
+app.use("/api/news", require("./routes/api/news"));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX/API requests
