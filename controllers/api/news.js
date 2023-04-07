@@ -7,7 +7,7 @@ module.exports = {
 
 async function index(req, res) {
   try {
-    const news = NewsArticle.find({});
+    const news = await NewsArticle.find({});
     res.json(news);
   } catch (err) {
     res.status(400).json(err);
@@ -19,6 +19,7 @@ async function createNews(req, res) {
     const newsArt = await NewsArticle.create(req.body);
     res.json(newsArt);
   } catch (err) {
+    console.error("Error creating news article:", err);
     res.status(400).json(err);
   }
 }

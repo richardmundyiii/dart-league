@@ -9,7 +9,8 @@ export default function NewsForm({ user }) {
 
   async function handleSavePost(e) {
     e.preventDefault();
-    await NewsFeedApi.createNews(newPost);
+    const savedArticle = await NewsFeedApi.createNews(newPost);
+    setNewPost(savedArticle);
     setNewPost({
       headline: "",
       post: "",
