@@ -9,8 +9,7 @@ export default function NewsForm({ user }) {
 
   async function handleSavePost(e) {
     e.preventDefault();
-    const savePost = await NewsFeedApi.createNews(newPost);
-    setNewPost(savePost);
+    await NewsFeedApi.createNews(newPost);
     setNewPost({
       headline: "",
       post: "",
@@ -35,6 +34,7 @@ export default function NewsForm({ user }) {
               placeholder="Headline"
               className="form-control"
               onChange={handleInputChange}
+              value={newPost.headline}
             />
             <br />
             <textarea
@@ -44,8 +44,13 @@ export default function NewsForm({ user }) {
               className="form-control"
               placeholder="Your Post Goes Here..."
               onChange={handleInputChange}
+              value={newPost.post}
             ></textarea>
-            <button className="btn btn-primary" style={{ width: "100%" }}>
+            <button
+              className="btn btn-primary"
+              style={{ width: "100%" }}
+              type="submit"
+            >
               POST
             </button>
           </form>
