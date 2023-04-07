@@ -1,11 +1,15 @@
-const newsArticle = require("../../models/newsArticle");
+const NewsArticle = require("../../models/newsArticle");
 
 module.exports = {
   createNews,
 };
 
 async function createNews(req, res) {
-  console.log("working");
-  console.log(req.body);
-  //   newsArt = newsArticle.create(req.body);
+  try {
+    console.log("working", req.body);
+    const newsArt = await NewsArticle.create(req.body);
+    res.json(newsArt);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 }
