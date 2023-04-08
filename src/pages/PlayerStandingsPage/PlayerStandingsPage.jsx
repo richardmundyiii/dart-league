@@ -45,6 +45,7 @@ export default function PlayerStandingsPage({ user, setUser }) {
         ...playerStats,
       };
     })
+    .filter((player) => player.wins !== 0 || player.losses !== 0)
     .sort((a, b) => {
       if (sortOrder === "desc") {
         [a, b] = [b, a];
