@@ -1,0 +1,18 @@
+.home-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 3vmin 0px 3vmin 0px;
+}
+
+.fall-results {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.info-map img {
+  height: 35vmin;
+  border: 2px solid black;
+}
