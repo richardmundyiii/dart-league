@@ -1,0 +1,44 @@
+.docu-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  margin: 2vmin;
+}
+
+.docu-container a {
+  text-decoration: none;
+  color: white;
+}
+
+.docu-card {
+  flex-direction: column;
+  padding: 2vmin;
+  margin: 2vmin;
+  height: auto;
+}
+
+.docu-card img {
+  height: 20vmin;
+}
+
+#doc-body {
+  display: flex;
+  flex-direction: column;
+}
+
+#doc-body button {
+  margin-top: 2vmin;
+}
+
+@media (max-width: 768px) {
+  .docu-container {
+    grid-template-columns: 1fr;
+  }
+  .docu-card {
+    height: auto;
+  }
+
+  .docu-card img {
+    height: 30vmin;
+  }
+}

@@ -61,6 +61,16 @@ export default function NavBar({ user, setUser }) {
                   News
                 </a>
               </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  href="/documents"
+                  role="button"
+                  aria-expanded="false"
+                >
+                  DocuCenter
+                </a>
+              </li>
             </ul>
             {!user || !user.isAdmin ? (
               <button className="btn btn-danger">
