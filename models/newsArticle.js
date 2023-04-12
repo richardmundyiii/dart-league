@@ -8,7 +8,7 @@ const newsArticleSchema = new Schema(
       required: true,
     },
     post: {
-      type: String,
+      type: Schema.Types.Mixed,
       required: true,
     },
   },

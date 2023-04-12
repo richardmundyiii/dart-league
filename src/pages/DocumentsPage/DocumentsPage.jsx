@@ -3,6 +3,7 @@ import HighlightsSheet from "../../assets/images/highlights.png";
 import ASheet from "../../assets/images/divisionA.png";
 import BSheet from "../../assets/images/divisionB.png";
 import DrinkSheet from "../../assets/images/DrinkSheet.png";
+import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
 
 export default function DocumentsPage() {
   return (

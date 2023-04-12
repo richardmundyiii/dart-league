@@ -1,4 +1,12 @@
 import { useState, useEffect } from "react";
+import {
+  Editor,
+  EditorState,
+  convertFromRaw,
+  convertToRaw,
+  ContentState,
+} from "draft-js";
+import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
 import "./NewsPage.css";
 import NewsForm from "../../components/NewsForm/NewsForm";
 import * as NewsFeedApi from "../../utilities/news-api";
@@ -9,6 +17,7 @@ export default function NewsPage({ user }) {
   const [newPost, setNewPost] = useState({
     headline: "",
     post: "",
+    editorState: EditorState.createEmpty(),
   });
 
   useEffect(() => {
@@ -21,17 +30,38 @@ export default function NewsPage({ user }) {
 
   async function handleSavePost(e) {
     e.preventDefault();
+    const contentState = newPost.editorState.getCurrentContent();
+    const rawContent = convertToRaw(contentState);
+    const postToSave = {
+      ...newPost,
+      post: JSON.stringify(rawContent),
+    };
+
     if (isEditing) {
-      const updatedPost = await NewsFeedApi.updatePost(newPost._id, newPost);
+      const updatedPost = await NewsFeedApi.updatePost(
+        postToSave._id,
+        postToSave
+      );
       setIsEditing(false);
       setNewPost(updatedPost);
     } else {
-      const savedArticle = await NewsFeedApi.createNews(newPost);
+      const savedArticle = await NewsFeedApi.createNews(postToSave);
       setNewPost(savedArticle);
     }
     setNewPost({
       headline: "",
       post: "",
+      editorState: EditorState.createEmpty(),
+    });
+  }
+
+  function handleEditorChange(editorState) {
+    const contentState = editorState.getCurrentContent();
+    const postText = JSON.stringify(convertToRaw(contentState));
+    setNewPost({
+      ...newPost,
+      editorState: editorState,
+      post: postText,
     });
   }
 
@@ -47,6 +77,24 @@ export default function NewsPage({ user }) {
     setNewPost(updatedArticle);
   }
 
+  function jsonStringToContentState(jsonString) {
+    if (isValidJSON(jsonString)) {
+      const rawContent = JSON.parse(jsonString);
+      return convertFromRaw(rawContent);
+    } else {
+      return ContentState.createFromText(jsonString);
+    }
+  }
+
+  function isValidJSON(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+
   return (
     <>
       <div className="card m-3 p-3">
@@ -59,7 +107,14 @@ export default function NewsPage({ user }) {
             .map((n, idx) => (
               <div key={idx}>
                 <h3>{n.headline}</h3>
-                <p className="post-content">{n.post}</p>
+                <div className="post-content">
+                  <Editor
+                    editorState={EditorState.createWithContent(
+                      jsonStringToContentState(n.post)
+                    )}
+                    readOnly={true}
+                  />
+                </div>
                 {user?.isAdmin ? (
                   <section>
                     <button
@@ -93,16 +148,11 @@ export default function NewsPage({ user }) {
               value={newPost.headline}
             />
             <br />
-            <textarea
-              name="post"
-              cols="30"
-              rows="10"
-              className="form-control"
-              placeholder="Your Post Goes Here..."
-              onChange={handleInputChange}
-              value={newPost.post}
-              spellCheck="true"
-            ></textarea>
+            <RichTextEditor
+              onChange={handleEditorChange}
+              editorState={newPost.editorState}
+              readOnly={false}
+            />
             <button
               className="btn btn-primary"
               style={{ width: "100%" }}

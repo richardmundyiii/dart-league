@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Editor, EditorState, ContentState, convertFromRaw } from "draft-js";
 import Logo from "../../assets/images/santaCDA.png";
 import Camellia from "../../assets/images/camellia23.jpg";
 import TurkeyShoot from "../../assets/images/turkeyShoot.jpg";
@@ -16,6 +17,24 @@ export default function Homepage({ setUser }) {
     }
     getAllArticles();
   }, []);
+
+  function jsonStringToContentState(jsonString) {
+    if (isValidJSON(jsonString)) {
+      const rawContent = JSON.parse(jsonString);
+      return convertFromRaw(rawContent);
+    } else {
+      return ContentState.createFromText(jsonString);
+    }
+  }
+
+  function isValidJSON(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
 
   return (
     <>
@@ -79,7 +98,14 @@ export default function Homepage({ setUser }) {
                 <h2>{newsArticle[newsArticle.length - 1].headline}</h2>
               </section>
               <section className="card-body">
-                <p>{newsArticle[newsArticle.length - 1].post}</p>
+                <Editor
+                  editorState={EditorState.createWithContent(
+                    jsonStringToContentState(
+                      newsArticle[newsArticle.length - 1].post
+                    )
+                  )}
+                  readOnly={true}
+                />
               </section>
             </section>
           )}
@@ -88,9 +114,14 @@ export default function Homepage({ setUser }) {
               <section className="card-header">
                 <h2>{newsArticle[newsArticle.length - 2].headline}</h2>
               </section>
-              <section className="card-body">
-                <p>{newsArticle[newsArticle.length - 2].post}</p>
-              </section>
+              <Editor
+                editorState={EditorState.createWithContent(
+                  jsonStringToContentState(
+                    newsArticle[newsArticle.length - 2].post
+                  )
+                )}
+                readOnly={true}
+              />
             </section>
           )}
         </section>

@@ -18,6 +18,7 @@ async function index(req, res) {
 async function createNews(req, res) {
   try {
     const newsArt = await NewsArticle.create(req.body);
+    console.log("working...", req.body);
     res.json(newsArt);
   } catch (err) {
     console.error("Error creating news article:", err);
