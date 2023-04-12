@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import * as userService from "../../utilities/users-service";
+import "./NavBar.css";
 
 export default function NavBar({ user, setUser }) {
   function handleLogOut() {
@@ -73,12 +74,12 @@ export default function NavBar({ user, setUser }) {
               </li>
             </ul>
             {!user || !user.isAdmin ? (
-              <button className="btn btn-danger">
+              <button className="btn btn-danger" id="nav-log-button">
                 <a href="/auth">Login</a>
               </button>
             ) : (
               <button className="btn btn-info">
-                <Link onClick={handleLogOut} href="/logout">
+                <Link onClick={handleLogOut} href="/logout" id="nav-log-button">
                   Logout
                 </Link>
               </button>
