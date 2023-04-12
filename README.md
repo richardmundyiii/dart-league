@@ -93,7 +93,7 @@ All your dart league needs in one comprehensive site. From users ability to chec
 
 |      Description      | Screenshot                                                |
 | :-------------------: | --------------------------------------------------------- |
-| <h3>Scraper Code</h3> | <img src="https://i.imgur.com/WEtFkdB.png" width="700" /> |
+| <h3>Scraper Code</h3> | <img src="https://i.imgur.com/DaEDUEd.png" width="700" /> |
 
 </details>
 
