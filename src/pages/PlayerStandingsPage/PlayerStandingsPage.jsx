@@ -89,46 +89,48 @@ export default function PlayerStandingsPage({ user, setUser }) {
         <option value="B">B League</option>
       </select>
       <div className="card p-5 mt-3">
-        <table className="table table-striped">
-          <thead>
-            <tr>
-              <th>Place</th>
-              <th>Player</th>
-              <th onClick={() => handleSort("Wins")}>Wins</th>
-              <th onClick={() => handleSort("Losses")}>Losses</th>
-              <th onClick={() => handleSort("Win %")}>Win %</th>
-              <th onClick={() => handleSort("Cr. Highlights")}>
-                Cr. Highlights
-              </th>
-              <th onClick={() => handleSort("'01 Highlights")}>
-                01 Highlights
-              </th>
-              <th onClick={() => handleSort("'01 Points")}>01 Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            {proData.map((player, idx) => (
-              <tr key={idx}>
-                <td>{idx + 1}</td>
-                <td>
-                  <Link
-                    to={`/players/${player._id}`}
-                    className="btn btn-success"
-                    style={{ width: "100%" }}
-                  >
-                    {player.name}
-                  </Link>
-                </td>
-                <td>{player.wins}</td>
-                <td>{player.losses}</td>
-                <td>{player.winPercentage.toFixed(2)}%</td>
-                <td>{player.cricketHighlights}</td>
-                <td>{player.zeroOneHighlights}</td>
-                <td>{player.zeroOnePoints}</td>
+        <div className="table-responsive">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>Place</th>
+                <th>Player</th>
+                <th onClick={() => handleSort("Wins")}>Wins</th>
+                <th onClick={() => handleSort("Losses")}>Losses</th>
+                <th onClick={() => handleSort("Win %")}>Win %</th>
+                <th onClick={() => handleSort("Cr. Highlights")}>
+                  Cr. Highlights
+                </th>
+                <th onClick={() => handleSort("'01 Highlights")}>
+                  01 Highlights
+                </th>
+                <th onClick={() => handleSort("'01 Points")}>01 Points</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {proData.map((player, idx) => (
+                <tr key={idx}>
+                  <td>{idx + 1}</td>
+                  <td>
+                    <Link
+                      to={`/players/${player._id}`}
+                      className="btn btn-success"
+                      style={{ width: "100%" }}
+                    >
+                      {player.name}
+                    </Link>
+                  </td>
+                  <td>{player.wins}</td>
+                  <td>{player.losses}</td>
+                  <td>{player.winPercentage.toFixed(2)}%</td>
+                  <td>{player.cricketHighlights}</td>
+                  <td>{player.zeroOneHighlights}</td>
+                  <td>{player.zeroOnePoints}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
   );

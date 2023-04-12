@@ -7,10 +7,18 @@ export default function NewsForm({ user }) {
     post: "",
   });
 
+  const [isEditing, setIsEditing] = useState(false);
+
   async function handleSavePost(e) {
     e.preventDefault();
-    const savedArticle = await NewsFeedApi.createNews(newPost);
-    setNewPost(savedArticle);
+    if (isEditing) {
+      const updatedPost = await NewsFeedApi.updatePost(newPost._id, newPost);
+      setIsEditing(false);
+      setNewPost(updatedPost);
+    } else {
+      const savedArticle = await NewsFeedApi.createNews(newPost);
+      setNewPost(savedArticle);
+    }
     setNewPost({
       headline: "",
       post: "",
