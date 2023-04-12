@@ -1,10 +1,24 @@
+import { useState, useEffect } from "react";
 import Logo from "../../assets/images/santaCDA.png";
 import Camellia from "../../assets/images/camellia23.jpg";
 import TurkeyShoot from "../../assets/images/turkeyShoot.jpg";
 import StocktonRB from "../../assets/images/stocktonRB.jpg";
 import "./Homepage.css";
+import * as NewsApi from "../../utilities/news-api";
 
 export default function Homepage({ setUser }) {
+  const [newsArticle, setNewsArticle] = useState([]);
+
+  useEffect(() => {
+    async function getAllArticles() {
+      const newsArticle = await NewsApi.getAllArticles();
+      setNewsArticle(newsArticle);
+    }
+    getAllArticles();
+  }, []);
+
+  console.log(newsArticle);
+
   return (
     <>
       <main>
@@ -30,7 +44,7 @@ export default function Homepage({ setUser }) {
         <section className="home-bottom">
           <section className="fall-results">
             <section>
-              <section className="card">
+              <section className="card" id="fall-card">
                 <section className="card-header text-center">
                   <h3>Fall 2022 A League</h3>
                   <section className="card-body text-center">
@@ -46,7 +60,7 @@ export default function Homepage({ setUser }) {
               </section>
             </section>
             <section>
-              <section className="card">
+              <section className="card" id="fall-card">
                 <section className="card-header text-center">
                   <h3>Fall 2022 B League</h3>
                   <section className="card-body text-center">
@@ -65,6 +79,28 @@ export default function Homepage({ setUser }) {
           <section className="info-map">
             <img src="https://i.imgur.com/HAzluOd.jpg" alt="" />
           </section>
+        </section>
+        <section className="home-news">
+          {newsArticle.length > 0 && (
+            <section className="card" id="home-news-card">
+              <section className="card-header">
+                <h2>{newsArticle[newsArticle.length - 1].headline}</h2>
+              </section>
+              <section className="card-body">
+                <p>{newsArticle[newsArticle.length - 1].post}</p>
+              </section>
+            </section>
+          )}
+          {newsArticle.length > 0 && (
+            <section className="card" id="home-news-card">
+              <section className="card-header">
+                <h2>{newsArticle[newsArticle.length - 2].headline}</h2>
+              </section>
+              <section className="card-body">
+                <p>{newsArticle[newsArticle.length - 2].post}</p>
+              </section>
+            </section>
+          )}
         </section>
       </main>
     </>

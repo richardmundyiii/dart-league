@@ -4,15 +4,46 @@
   justify-content: center;
   align-items: center;
   margin: 3vmin 0px 3vmin 0px;
+  height: 100%;
 }
 
 .fall-results {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: 2vmin;
 }
 
 .info-map img {
   height: 35vmin;
   border: 2px solid black;
+}
+
+.home-second-row {
+  height: 100%;
+  background-color: pink;
+}
+
+#fall-card {
+  padding: 1vmin;
+  margin: 0.5vmin;
+}
+
+.home-news {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 3vmin;
+}
+
+#home-news-card {
+  width: 70vmin;
+  height: 30vmin;
+  overflow: scroll;
+  margin: 1vmin;
+}
+
+#home-news-card h2 {
+  font-weight: bold;
 }

@@ -14,6 +14,7 @@ export default function NewsPage({ user }) {
     getArticles();
   }, []);
 
+  console.log(newsArticle);
   return (
     <>
       <div className="card m-3 p-3">
