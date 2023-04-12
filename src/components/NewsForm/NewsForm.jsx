@@ -46,6 +46,7 @@ export default function NewsForm({ user }) {
               placeholder="Your Post Goes Here..."
               onChange={handleInputChange}
               value={newPost.post}
+              spellCheck="true"
             ></textarea>
             <button
               className="btn btn-primary"
