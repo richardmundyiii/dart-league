@@ -83,6 +83,22 @@ All your dart league needs in one comprehensive site. From users ability to chec
 
 <div>
 
+## Current Features
+
+</div>
+
+<details>
+  <summary>Webscrapping Team Standings</summary>
+  To save time for league admins, this league is using DartConnect to "manage" its league stats through their game app. Unfortunately, they do not have an API to pull data from. So I built a webscrapper to pull just league standings. You can find more details on the web scrapping here: https://github.com/richardmundyiii/dart-connect-scraper
+
+|      Description      | Screenshot                                                |
+| :-------------------: | --------------------------------------------------------- |
+| <h3>Scraper Code</h3> | <img src="https://i.imgur.com/WEtFkdB.png" width="700" /> |
+
+</details>
+
+<div>
+
 ## :satellite: Upcoming Features
 
 - [:x:] Add admin blog
