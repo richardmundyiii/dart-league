@@ -17,28 +17,20 @@ export default function Homepage({ setUser }) {
     getAllArticles();
   }, []);
 
-  console.log(newsArticle);
-
   return (
     <>
-      <main>
+      <main className="main-homepage">
         <section id="mainLogo">
           <img src={Logo} alt="Santa Cruz Dart League Logo" className="w-25" />
         </section>
         <section id="upcomingEvents" className="text-center">
-          <img src={Camellia} alt="Camellia Classic Flyer" className="w-25" />
+          <img src={Camellia} alt="Camellia Classic Flyer" />
           <img
             src={TurkeyShoot}
             alt="Santa Cruz Turkey Shoot Flyer"
             id="mobile"
-            className="w-25"
           />
-          <img
-            src={StocktonRB}
-            alt="The Riverboat Flyer"
-            id="mobile"
-            className="w-25"
-          />
+          <img src={StocktonRB} alt="The Riverboat Flyer" id="mobile" />
         </section>
 
         <section className="home-bottom">

@@ -47,3 +47,40 @@
 #home-news-card h2 {
   font-weight: bold;
 }
+
+#upcomingEvents {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#upcomingEvents img {
+  width: 30%;
+  margin: 1%;
+}
+
+@media (max-width: 768px) {
+  .main-homepage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .home-bottom,
+  .fall-results,
+  .home-news {
+    flex-direction: column;
+  }
+
+  .info-map img {
+    height: 60vmin;
+  }
+
+  #home-news-card {
+    width: 90vmin;
+  }
+
+  #upcomingEvents img {
+    width: 90%;
+    margin: 5%;
+  }
+}
