@@ -101,7 +101,7 @@ All your dart league needs in one comprehensive site. From users ability to chec
 
 <summary>Admin Blog w/ Formatting</summary>
 
-To keep all players up-to-date on latest league news, admins can create 'blog' style posts that saves to the database. Additionally, on the homepage near the bottom are the latest 2 posts rendering dynamically. To create more visually appealing posts I included [React Draft.js](https://draftjs.org/)
+To keep all players up-to-date on latest league news, admins can create 'blog' style posts that saves to the database. Additionally, on the homepage near the bottom are the latest 2 posts rendering dynamically. To create more visually appealing posts I included React's [Draft.js](https://draftjs.org/) to allow spell checking and formatting posts. Admins can also edit posts in the same form and delete unnecessary posts.
 
 |        Description         | Screenshot                                                |
 | :------------------------: | --------------------------------------------------------- |
