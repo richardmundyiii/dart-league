@@ -89,7 +89,7 @@ All your dart league needs in one comprehensive site. From users ability to chec
 
 <details>
   <summary>Webscrapping Team Standings</summary>
-  To save time for league admins, this league is using DartConnect to "manage" its league stats through their game app. Unfortunately, they do not have an API to pull data from. So I built a webscrapper to pull just league standings. You can find more details on the web scrapping here: https://github.com/richardmundyiii/dart-connect-scraper
+  To save time for league admins, this league is using DartConnect to "manage" its league stats through their game app. Unfortunately, they do not have an API to pull data from. So I built a webscrapper to pull just league standings. You can find more details on the web scrapping at my other repo here: https://github.com/richardmundyiii/dart-connect-scraper
 
 |      Description      | Screenshot                                                |
 | :-------------------: | --------------------------------------------------------- |
@@ -97,11 +97,23 @@ All your dart league needs in one comprehensive site. From users ability to chec
 
 </details>
 
+<details>
+
+<summary>Admin Blog w/ Formatting</summary>
+
+To keep all players up-to-date on latest league news, admins can create 'blog' style posts that saves to the database. Additionally, on the homepage near the bottom are the latest 2 posts rendering dynamically. To create more visually appealing posts I included [React Draft.js](https://draftjs.org/)
+
+|        Description         | Screenshot                                                |
+| :------------------------: | --------------------------------------------------------- |
+| <h3>Admin Blog Portal</h3> | <img src="https://i.imgur.com/zVrog8P.png" width="700" /> |
+
+</details>
+
 <div>
 
 ## :satellite: Upcoming Features
 
-- [:x:] Add admin blog
+- [:white_check_mark:] Add admin blog
 
 - [:x:] Create user profiles
 
