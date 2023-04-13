@@ -31,7 +31,7 @@ All your dart league needs in one comprehensive site. From users ability to chec
 |    <h3>Wireframes</h3>    | <img src='https://i.imgur.com/QKFOTwV.png' width="700" /> |
 |  <h3>Team Standings</h3>  | <img src='https://i.imgur.com/zAZTKqU.png' width="700" /> |
 | <h3>Player Standings</h3> | <img src='https://i.imgur.com/NUNr3ND.png' width="700" /> |
-|    <h3>Admin Edit</h3>    | <img src='https://i.imgur.com/4mkWhx8.png' width="700" /> |
+|    <h3>Admin Edit</h3>    | <img src='https://i.imgur.com/TSuOu7k.png' width="700" /> |
 
 </div>
 
@@ -87,7 +87,7 @@ All your dart league needs in one comprehensive site. From users ability to chec
 
 </div>
 
-<details>
+<details open>
   <summary>Webscrapping Team Standings</summary>
   To save time for league admins, this league is using DartConnect to "manage" its league stats through their game app. Unfortunately, they do not have an API to pull data from. So I built a webscrapper to pull just league standings. You can find more details on the web scrapping at my other repo here: https://github.com/richardmundyiii/dart-connect-scraper
 
@@ -97,7 +97,7 @@ All your dart league needs in one comprehensive site. From users ability to chec
 
 </details>
 
-<details>
+<details open>
 
 <summary>Admin Blog w/ Formatting</summary>
 
@@ -106,6 +106,7 @@ To keep all players up-to-date on latest league news, admins can create 'blog' s
 |        Description         | Screenshot                                                |
 | :------------------------: | --------------------------------------------------------- |
 | <h3>Admin Blog Portal</h3> | <img src="https://i.imgur.com/zVrog8P.png" width="700" /> |
+|   <h3>Homepage News</h3>   | <img src="https://i.imgur.com/dnoM51O.png" width="700" /> |
 
 </details>
 
