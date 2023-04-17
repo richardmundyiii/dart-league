@@ -3,7 +3,6 @@ import HighlightsSheet from "../../assets/images/highlights.png";
 import ASheet from "../../assets/images/divisionA.png";
 import BSheet from "../../assets/images/divisionB.png";
 import DrinkSheet from "../../assets/images/DrinkSheet.png";
-import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
 
 export default function DocumentsPage() {
   return (
@@ -15,8 +14,8 @@ export default function DocumentsPage() {
               <h2>A League Score Sheet</h2>
             </section>
             <section className="card-body" id="doc-body">
-              <a href={`${process.env.PUBLIC_URL}/ScoreB.pdf`}>
-                <img src={ASheet} />
+              <a href={`${process.env.PUBLIC_URL}/ScoreA.pdf`}>
+                <img src={ASheet} alt="A League Scoresheet" />
               </a>
               <button className="btn btn-success">
                 <a href={`${process.env.PUBLIC_URL}/ScoreA.pdf`} download>
@@ -31,7 +30,7 @@ export default function DocumentsPage() {
             </section>
             <section className="card-body" id="doc-body">
               <a href={`${process.env.PUBLIC_URL}/ScoreB.pdf`}>
-                <img src={BSheet} />
+                <img src={BSheet} alt="B League Scoresheet" />
               </a>
               <button className="btn btn-success">
                 <a href={`${process.env.PUBLIC_URL}/ScoreB.pdf`} download>
@@ -46,7 +45,7 @@ export default function DocumentsPage() {
             </section>
             <section className="card-body" id="doc-body">
               <a href={`${process.env.PUBLIC_URL}/Highlights.pdf`}>
-                <img src={HighlightsSheet} />
+                <img src={HighlightsSheet} alt="Highlights Scoresheet" />
               </a>
               <button className="btn btn-success">
                 <a href={`${process.env.PUBLIC_URL}/Highlights.pdf`} download>
@@ -61,7 +60,7 @@ export default function DocumentsPage() {
             </section>
             <section className="card-body" id="doc-body">
               <a href={`${process.env.PUBLIC_URL}/DrinkSheet.pdf`}>
-                <img src={DrinkSheet} />
+                <img src={DrinkSheet} alt="Drink Sheet" />
               </a>
               <button className="btn btn-success">
                 <a href={`${process.env.PUBLIC_URL}/DrinkSheet.pdf`} download>

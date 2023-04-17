@@ -8,7 +8,6 @@ import {
 } from "draft-js";
 import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
 import "./NewsPage.css";
-import NewsForm from "../../components/NewsForm/NewsForm";
 import * as NewsFeedApi from "../../utilities/news-api";
 
 export default function NewsPage({ user }) {
@@ -19,6 +18,7 @@ export default function NewsPage({ user }) {
     post: "",
     editorState: EditorState.createEmpty(),
   });
+  const [headline, setHeadline] = useState("");
 
   useEffect(() => {
     async function getArticles() {
@@ -33,7 +33,7 @@ export default function NewsPage({ user }) {
     const contentState = newPost.editorState.getCurrentContent();
     const rawContent = convertToRaw(contentState);
     const postToSave = {
-      ...newPost,
+      headline: headline,
       post: JSON.stringify(rawContent),
     };
 
@@ -66,10 +66,14 @@ export default function NewsPage({ user }) {
   }
 
   function handleInputChange(e) {
-    setNewPost({
-      ...newPost,
-      [e.target.name]: e.target.value,
-    });
+    if (e.target.name === "headline") {
+      setHeadline(e.target.value);
+    } else {
+      setNewPost({
+        ...newPost,
+        [e.target.name]: e.target.value,
+      });
+    }
   }
 
   async function handleDeleteClick(id) {
@@ -145,7 +149,7 @@ export default function NewsPage({ user }) {
               placeholder="Headline"
               className="form-control"
               onChange={handleInputChange}
-              value={newPost.headline}
+              value={headline}
             />
             <br />
             <RichTextEditor

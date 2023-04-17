@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Editor, EditorState, getDefaultKeyBinding, RichUtils } from "draft-js";
 import "./RichTextEditor.css";
 import "draft-js/dist/Draft.css";
@@ -10,7 +10,13 @@ class RichTextEditor extends React.Component {
       editorState: props.editorState || EditorState.createEmpty(),
     };
 
-    this.focus = () => this.refs.editor.focus();
+    this.editor = React.createRef();
+
+    this.focus = () => {
+      if (this.editor.current) {
+        this.editor.current.focus();
+      }
+    };
     this.onChange = (editorState) => {
       if (props.onChange) {
         props.onChange(editorState);
@@ -96,7 +102,7 @@ class RichTextEditor extends React.Component {
             keyBindingFn={this.mapKeyToEditorCommand}
             onChange={this.onChange}
             placeholder="Tell a story..."
-            ref="editor"
+            ref={this.editor}
             spellCheck={true}
           />
         </div>

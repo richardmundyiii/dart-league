@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as standingsApi from "../../utilities/team-standings-api";
-import * as PlayerApi from "../../utilities/player-api";
+// import * as PlayerApi from "../../utilities/player-api";
 import "./TeamStandingsPage.css";
 
 export default function Standing({ user, setUser }) {
   const [division, setDivision] = useState("A");
   const [standings, setStandings] = useState([]);
-  const [player, setPlayer] = useState(null);
+  // const [player, setPlayer] = useState(null);
 
   useEffect(() => {
     async function getTeamStandings() {
@@ -21,10 +21,10 @@ export default function Standing({ user, setUser }) {
 
   function handleCreatePlayerClick() {}
 
-  async function handleInputChange(e) {
-    e.preventDefault();
-    const player = await PlayerApi.createPlayer();
-  }
+  // async function handleInputChange(e) {
+  //   e.preventDefault();
+  //   const player = await PlayerApi.createPlayer();
+  // }
 
   return (
     <main className="team-standings-page">
