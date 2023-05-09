@@ -10,7 +10,7 @@ export async function createNews(newsFeed) {
 }
 
 export async function updatePost(id, postData) {
-  return sendRequest(`${BASE_URL}/${id}/news`, "PUT", postData);
+  return sendRequest(`${BASE_URL}/${id}`, "PUT", postData);
 }
 
 export async function deletePost(id) {

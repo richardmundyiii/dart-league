@@ -6,4 +6,8 @@ router.get("/", NewsCtrl.index);
 
 router.post("/", NewsCtrl.createNews);
 
+router.put("/:id", NewsCtrl.updateArticle);
+
+router.delete("/:id", NewsCtrl.deleteArticle);
+
 module.exports = router;

@@ -3,6 +3,7 @@ const NewsArticle = require("../../models/newsArticle");
 module.exports = {
   index,
   createNews,
+  updateArticle,
   deleteArticle,
 };
 
@@ -26,11 +27,23 @@ async function createNews(req, res) {
   }
 }
 
+async function updateArticle(req, res) {
+  try {
+    const updatedArticle = await NewsArticle.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.json(updatedArticle);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
 async function deleteArticle(req, res) {
   try {
-    console.log("working");
-    const article = await NewsArticle.findOne({ _id: req.params.id });
-    console.log(article);
+    const article = await NewsArticle.findOneAndDelete({ _id: req.params.id });
+    res.json(article);
   } catch (err) {
     res.status(400).json(err);
   }

@@ -22,12 +22,12 @@ const main = async () => {
       });
       return formattedCells;
     });
-    const aLeague = formatted.splice(12, 14);
+    const aLeague = formatted.splice(13, 5);
     const bLeague = formatted.splice(2, 8);
     return { aLeague, bLeague };
   });
 
-  await Standing.deleteMany({});
+  // await Standing.deleteMany({});
 
   await Standing.insertMany(
     content.aLeague.map((row) => ({
@@ -61,4 +61,5 @@ const main = async () => {
   await browser.close();
 };
 
-cron.schedule("0 9 * * SUN", main);
+main();
+// cron.schedule("0 9 * * SUN", main);

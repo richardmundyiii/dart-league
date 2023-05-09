@@ -19,6 +19,7 @@ export default function NewsPage({ user }) {
     editorState: EditorState.createEmpty(),
   });
   const [headline, setHeadline] = useState("");
+  const [articleId, setArticleId] = useState(null);
 
   useEffect(() => {
     async function getArticles() {
@@ -33,6 +34,7 @@ export default function NewsPage({ user }) {
     const contentState = newPost.editorState.getCurrentContent();
     const rawContent = convertToRaw(contentState);
     const postToSave = {
+      _id: articleId,
       headline: headline,
       post: JSON.stringify(rawContent),
     };
@@ -43,15 +45,32 @@ export default function NewsPage({ user }) {
         postToSave
       );
       setIsEditing(false);
-      setNewPost(updatedPost);
+      setNewsArticle(
+        newsArticle.map((article) =>
+          article._id === updatedPost._id ? updatedPost : article
+        )
+      );
     } else {
       const savedArticle = await NewsFeedApi.createNews(postToSave);
-      setNewPost(savedArticle);
+      setNewsArticle([...newsArticle, savedArticle]);
     }
     setNewPost({
+      _id: null,
       headline: "",
       post: "",
       editorState: EditorState.createEmpty(),
+    });
+  }
+
+  function handleEditClick(article) {
+    setIsEditing(true);
+    setArticleId(article._id);
+    setHeadline(article.headline);
+    setNewPost({
+      ...newPost,
+      editorState: EditorState.createWithContent(
+        jsonStringToContentState(article.post)
+      ),
     });
   }
 
@@ -77,8 +96,9 @@ export default function NewsPage({ user }) {
   }
 
   async function handleDeleteClick(id) {
-    const updatedArticle = await NewsFeedApi.deletePost(id);
-    setNewPost(updatedArticle);
+    await NewsFeedApi.deletePost(id);
+    const updatedArticles = newsArticle.filter((article) => article._id !== id);
+    setNewsArticle(updatedArticles);
   }
 
   function jsonStringToContentState(jsonString) {
@@ -124,6 +144,7 @@ export default function NewsPage({ user }) {
                     <button
                       className="btn btn-info"
                       style={{ width: "40vmin" }}
+                      onClick={() => handleEditClick(n)}
                     >
                       Edit
                     </button>
