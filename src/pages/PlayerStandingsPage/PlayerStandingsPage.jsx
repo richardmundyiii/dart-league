@@ -7,8 +7,8 @@ export default function PlayerStandingsPage({ user, setUser }) {
   const [division, setDivision] = useState("A");
   const [qualifiedPlayers, setQualifiedPlayers] = useState([]);
   const [unqualifiedPlayers, setUnqualifiedPlayers] = useState([]);
-  const [sortField, setSortField] = useState(null);
-  const [sortDirection, setSortDirection] = useState("asc");
+  const [sortField, setSortField] = useState("winPercentage");
+  const [sortDirection, setSortDirection] = useState("desc");
 
   useEffect(() => {
     async function getPlayerStandings() {
