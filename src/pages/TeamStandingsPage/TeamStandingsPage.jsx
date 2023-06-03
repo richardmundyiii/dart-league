@@ -17,6 +17,7 @@ export default function Standing({ user, setUser }) {
             ...team,
             points: team.points + 17,
             matchesWon: team.matchesWon + 1,
+            matchesPlayed: team.matchesPlayed + 1,
           };
         } else {
           return team;
@@ -34,7 +35,7 @@ export default function Standing({ user, setUser }) {
         }
       });
 
-      standings.sort((a, b) => a.place - b.place);
+      standings.sort((a, b) => b.points - a.points);
 
       setStandings(standings);
     }
@@ -53,7 +54,6 @@ export default function Standing({ user, setUser }) {
           <table className="table table-striped">
             <thead>
               <tr>
-                <th>Place</th>
                 <th>Team</th>
                 <th>Points</th>
                 <th>Wins</th>
@@ -65,8 +65,7 @@ export default function Standing({ user, setUser }) {
             </thead>
             <tbody className="team-standings-table">
               {standings.map((s) => (
-                <tr key={s._id}>
-                  <td>{s.place}</td>
+                <tr key={1}>
                   <td>
                     <Link className="btn btn-info" to={`/teams/${s.teamName}`}>
                       {s.teamName}
