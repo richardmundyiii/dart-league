@@ -9,13 +9,25 @@ export default function Standing({ user, setUser }) {
 
   useEffect(() => {
     async function getTeamStandings() {
-      const standings = await standingsApi.getTeamStandings(division);
+      let standings = await standingsApi.getTeamStandings(division);
 
       standings = standings.map((team) => {
         if (team.teamName === "Harbor Ratz") {
           return {
             ...team,
             points: team.points + 17,
+            matchesWon: team.matchesWon + 1,
+          };
+        } else {
+          return team;
+        }
+      });
+
+      standings = standings.map((team) => {
+        if (team.teamName === "Packin' Bulls") {
+          return {
+            ...team,
+            matchesPlayed: team.matchesPlayed + 1,
           };
         } else {
           return team;
