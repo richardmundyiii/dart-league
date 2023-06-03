@@ -34,12 +34,12 @@ export default function Standing({ user, setUser }) {
         }
       });
 
+      standings.sort((a, b) => a.place - b.place);
+
       setStandings(standings);
     }
     getTeamStandings();
   }, [division]);
-
-  standings.sort((a, b) => a.place - b.place);
 
   return (
     <main className="team-standings-page">
