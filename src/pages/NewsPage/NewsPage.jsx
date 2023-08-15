@@ -20,10 +20,18 @@ export default function NewsPage({ user }) {
   });
   const [headline, setHeadline] = useState("");
   const [articleId, setArticleId] = useState(null);
+  const [isSticky, setIsSticky] = useState(false);
 
   useEffect(() => {
     async function getArticles() {
       const newsArticle = await NewsFeedApi.getAllArticles();
+      const sortedArticles = newsArticle.sort((a, b) => {
+        if (a.isSticky && !b.isSticky) return -1;
+        if (!a.isSticky && b.isSticky) return 1;
+
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      });
+
       setNewsArticle(newsArticle);
     }
     getArticles();
@@ -37,6 +45,7 @@ export default function NewsPage({ user }) {
       _id: articleId,
       headline: headline,
       post: JSON.stringify(rawContent),
+      isSticky: isSticky,
     };
 
     if (isEditing) {
@@ -52,7 +61,11 @@ export default function NewsPage({ user }) {
       );
     } else {
       const savedArticle = await NewsFeedApi.createNews(postToSave);
-      setNewsArticle([...newsArticle, savedArticle]);
+      setNewsArticle((prevArticles) => [
+        savedArticle,
+        ...prevArticles.filter((article) => !article.isSticky),
+        ...prevArticles.filter((article) => article.isSticky),
+      ]);
     }
     setNewPost({
       _id: null,
@@ -60,6 +73,7 @@ export default function NewsPage({ user }) {
       post: "",
       editorState: EditorState.createEmpty(),
     });
+    setIsSticky(false);
   }
 
   function handleEditClick(article) {
@@ -119,6 +133,10 @@ export default function NewsPage({ user }) {
     return true;
   }
 
+  function handleStickyChange(e) {
+    setIsSticky(e.target.checked);
+  }
+
   return (
     <>
       <div className="card m-3 p-3">
@@ -142,7 +160,7 @@ export default function NewsPage({ user }) {
                 {user?.isAdmin ? (
                   <section>
                     <button
-                      className="btn btn-info"
+                      className="btn btn-info m-3"
                       style={{ width: "40vmin" }}
                       onClick={() => handleEditClick(n)}
                     >
@@ -150,10 +168,17 @@ export default function NewsPage({ user }) {
                     </button>
                     <button
                       onClick={() => handleDeleteClick(n._id)}
-                      className="btn btn-danger"
+                      className="btn btn-danger m-3"
                     >
                       DELETE
                     </button>
+                    <input
+                      type="checkbox"
+                      className="m-3"
+                      checked={isSticky}
+                      onChange={handleStickyChange}
+                    />
+                    <label htmlFor="checkbox">Sticky</label>
                   </section>
                 ) : null}
                 <hr />

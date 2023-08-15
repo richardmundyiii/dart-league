@@ -11,6 +11,10 @@ const newsArticleSchema = new Schema(
       type: Schema.Types.Mixed,
       required: true,
     },
+    isSticky: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

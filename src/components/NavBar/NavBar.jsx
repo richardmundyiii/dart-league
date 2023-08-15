@@ -72,6 +72,16 @@ export default function NavBar({ user, setUser }) {
                   DocuCenter
                 </a>
               </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  href="/sponsors"
+                  role="button"
+                  aria-expanded="false"
+                >
+                  Sponsors
+                </a>
+              </li>
             </ul>
             {!user || !user.isAdmin ? (
               <button className="btn btn-danger" id="nav-log-button">

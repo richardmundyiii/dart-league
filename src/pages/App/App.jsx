@@ -11,6 +11,7 @@ import TeamDetailPage from "../TeamDetailPage/TeamDetailPage";
 import PlayerDetailPage from "../PlayerDetailPage/PlayerDetailPage";
 import NewsPage from "../NewsPage/NewsPage";
 import DocumentsPage from "../DocumentsPage/DocumentsPage";
+import SponsorsPage from "../SponsorsPage/SponsorsPage";
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -43,6 +44,7 @@ function App() {
             element={<NewsPage user={user} setUser={setUser} />}
           />
           <Route path="/documents" element={<DocumentsPage />} />
+          <Route path="/sponsors" element={<SponsorsPage />} />
         </Routes>
       </>
     </main>
