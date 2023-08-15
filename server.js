@@ -3,6 +3,8 @@ const path = require("path");
 const favicon = require("serve-favicon");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
+const sponsorImageSchema = require('./models/sponsorImage.js')
+const fs = require('fs')
 require("dotenv").config();
 require("./config/database");
 
@@ -23,6 +25,49 @@ app.use(express.static(path.join(__dirname, "build")));
 app.use(require("./config/checkToken"));
 
 const port = process.env.PORT || 3001;
+
+//Sponsor Image API
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+});
+
+const upload = multer({ storage: storage });
+
+app.get('/', (req, res) => {
+  sponsorImageSchema.find({})
+  .then((data, err) => {
+    if(err) {console.log(err)
+    }
+  res.render('imagepage', {items: data})
+  })
+});
+
+app.post('/', upload.single('image'), (req, res, next) => {
+  const obj = {
+    name: req.body.name,
+    desc: req.body.desc,
+    img: {
+      data: fs.readFileSync(path.join(__dirname + '/uploads' + req.file.filename)),
+      contentType: 'image/png'
+    }
+  }
+  sponsorImageSchema.create(obj)
+  .then((err, itm) => {
+    if (err) {
+      console.log(err)
+    }
+    else {
+      res.redirect('/')
+    }
+  });
+});
 
 // Put API routes here, before the "catch all" route
 app.use("/api/users", require("./routes/api/users"));
