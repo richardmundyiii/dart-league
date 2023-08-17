@@ -4,6 +4,7 @@ const Players = require("../../models/player");
 module.exports = {
   forTeamDetail,
   teamDetails,
+  getTeams,
 };
 
 async function forTeamDetail(req, res) {
@@ -20,6 +21,16 @@ async function teamDetails(req, res) {
   try {
     const team = Teams.findOne({ name: req.params.id });
     res.json(team);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+async function getTeams(req, res) {
+  try {
+    const teams = Teams.find({});
+    console.log(teams, "working");
+    res.json(teams);
   } catch (err) {
     res.status(400).json(err);
   }
