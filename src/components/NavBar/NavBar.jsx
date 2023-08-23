@@ -18,8 +18,7 @@ export default function NavBar({ user, setUser }) {
             data-bs-target="#navbarTogglerDemo01"
             aria-controls="navbarTogglerDemo01"
             aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+            aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -37,8 +36,7 @@ export default function NavBar({ user, setUser }) {
                   className="nav-link"
                   href="/teamstandings"
                   role="button"
-                  aria-expanded="false"
-                >
+                  aria-expanded="false">
                   Team Standings
                 </a>
               </li>
@@ -47,9 +45,17 @@ export default function NavBar({ user, setUser }) {
                   className="nav-link"
                   href="/playerstandings"
                   role="button"
-                  aria-expanded="false"
-                >
+                  aria-expanded="false">
                   Player Standings
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  href="/historical"
+                  role="button"
+                  aria-expanded="false">
+                  Historical Stats
                 </a>
               </li>
               <li className="nav-item">
@@ -57,8 +63,7 @@ export default function NavBar({ user, setUser }) {
                   className="nav-link"
                   href="/news"
                   role="button"
-                  aria-expanded="false"
-                >
+                  aria-expanded="false">
                   News
                 </a>
               </li>
@@ -67,8 +72,7 @@ export default function NavBar({ user, setUser }) {
                   className="nav-link"
                   href="/documents"
                   role="button"
-                  aria-expanded="false"
-                >
+                  aria-expanded="false">
                   DocuCenter
                 </a>
               </li>
@@ -77,8 +81,7 @@ export default function NavBar({ user, setUser }) {
                   className="nav-link"
                   href="/sponsors"
                   role="button"
-                  aria-expanded="false"
-                >
+                  aria-expanded="false">
                   Sponsors
                 </a>
               </li>

@@ -8,6 +8,7 @@ import PlayerStandingsPage from "../PlayerStandingsPage/PlayerStandingsPage";
 import NewsPage from "../NewsPage/NewsPage";
 import DocumentsPage from "../DocumentsPage/DocumentsPage";
 import SponsorsPage from "../SponsorsPage/SponsorsPage";
+import HistoricalPage from "../HistoricalPage/HostoricalPage";
 
 export default function PublicPages({ user }) {
   return (
@@ -22,6 +23,7 @@ export default function PublicPages({ user }) {
         <Route path="/news" element={<NewsPage />} />
         <Route path="/documents" element={<DocumentsPage />} />
         <Route path="/sponsors" element={<SponsorsPage />} />
+        <Route path="/historical" element={<HistoricalPage />} />
       </Routes>
     </>
   );
